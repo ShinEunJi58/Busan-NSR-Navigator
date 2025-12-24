@@ -1,6 +1,6 @@
 // AI 채팅 UI 로직
 async function sendMessage() {
-    const input = document.getElementById('chatInput');
+    const input = document.getElementById('chat-input');
     const question = input.value.trim();
 
     if (!question) return;
@@ -23,38 +23,60 @@ async function sendMessage() {
 }
 
 function askQuestion(question) {
-    document.getElementById('chatInput').value = question;
+    document.getElementById('chat-input').value = question;
     sendMessage();
 }
 
 function addMessage(text, sender, isLoading = false, sources = []) {
-    const container = document.getElementById('chatContainer');
+    const container = document.getElementById('chat-container');
     const messageDiv = document.createElement('div');
-    messageDiv.className = `chat-message ${sender}`;
+
+    // Tailwind classes for chat bubbles
+    const isUser = sender === 'user';
+    messageDiv.className = `flex gap-3 mb-4 ${isUser ? 'flex-row-reverse' : ''}`;
+
     if (isLoading) messageDiv.id = 'loading-message';
 
     let sourcesHTML = '';
     if (sources && sources.length > 0) {
-        sourcesHTML = '<div class="sources"><strong>참고 자료:</strong> ' +
-            sources.map(s => s.title).join(', ') + '</div>';
+        sourcesHTML = `<div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-700 text-xs text-slate-500">
+            <strong>참고 자료:</strong> ${sources.map(s => s.title).join(', ')}
+        </div>`;
     }
 
+    // Avatar
+    const avatar = isUser
+        ? `<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-sm text-slate-500">person</span></div>`
+        : `<div class="size-8 rounded-full bg-primary flex items-center justify-center text-white shrink-0"><span class="material-symbols-outlined text-sm">smart_toy</span></div>`;
+
+    // Bubble Style
+    const bubbleStyle = isUser
+        ? "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200"
+        : "bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+
     messageDiv.innerHTML = `
-        <div class="message-content">
-            <strong>${sender === 'user' ? '사용자' : 'AI 상담원'}</strong>
+        ${avatar}
+        <div class="${bubbleStyle} p-3 rounded-2xl ${isUser ? 'rounded-tr-none' : 'rounded-tl-none'} shadow-sm max-w-[85%] text-sm leading-relaxed">
             <p>${text}</p>
             ${sourcesHTML}
         </div>
     `;
 
     container.appendChild(messageDiv);
-    container.scrollTop = container.scrollHeight;
+    container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
 }
 
 function removeLoadingMessage() {
     const loading = document.getElementById('loading-message');
     if (loading) loading.remove();
 }
+
+// Enter 키로 전송 확인
+document.getElementById('chat-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
 
 // 페이지 로드 시 AI 초기화
 document.addEventListener('DOMContentLoaded', async function () {

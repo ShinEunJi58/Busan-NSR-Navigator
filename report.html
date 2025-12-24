@@ -1,188 +1,249 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html class="light" lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>분석 보고서 - KOTRA 북극항로 네비게이터</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>분석 보고서 - KOTRA Polaris-Busan</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                        "sans": ["Public Sans", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="logo">🚢 NSR Navigator</div>
-            <nav>
-                <a href="index.html">🏠 홈</a>
-                <a href="dashboard.html">📊 대시보드</a>
-                <a href="input.html">📝 데이터 입력</a>
-                <a href="report.html" class="active">📈 분석 보고서</a>
-                <a href="ai-chat.html">🤖 AI 상담</a>
-            </nav>
-        </aside>
-
-        <main class="main-content">
-            <header class="page-header">
-                <h1>📈 종합 분석 보고서</h1>
-                <p>북극항로 활용 가능성 분석 결과</p>
-            </header>
-
-            <!-- 입력 정보 요약 -->
-            <section>
-                <h2>📋 입력 정보</h2>
-                <div class="comparison-cards">
-                    <div class="card">
-                        <h3>기본 정보</h3>
-                        <div class="metric">
-                            <span class="label">회사명</span>
-                            <span class="value" id="report-company">-</span>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+    <div
+        class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-8 max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl border-x border-slate-200 dark:border-slate-800">
+        <!-- TopAppBar -->
+        <div
+            class="sticky top-0 z-50 flex items-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm p-4 border-b border-slate-100 dark:border-slate-800">
+            <a href="input.html"
+                class="flex size-10 shrink-0 items-center justify-center cursor-pointer rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <span class="material-symbols-outlined text-slate-800 dark:text-white"
+                    style="font-size: 24px;">arrow_back_ios_new</span>
+            </a>
+            <h2
+                class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">
+                분석 보고서</h2>
+            <div class="flex w-10 items-center justify-end">
+                <button
+                    class="flex items-center justify-center rounded-full size-10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-primary"
+                    onclick="alert('공유 링크가 복사되었습니다.')">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">ios_share</span>
+                </button>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="flex flex-col p-4 gap-5">
+            <!-- Report Metadata Card -->
+            <div
+                class="flex flex-col gap-4 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="flex flex-col gap-1">
+                        <div class="inline-flex items-center gap-2">
+                            <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-xs font-semibold">AI
+                                분석완료</span>
+                            <span class="text-slate-400 dark:text-slate-500 text-xs" id="report-date">2023.10.25</span>
                         </div>
-                        <div class="metric">
-                            <span class="label">화물 유형</span>
-                            <span class="value" id="report-cargo">-</span>
-                        </div>
+                        <h3 class="text-slate-900 dark:text-white text-xl font-bold leading-tight mt-1"
+                            id="report-route">Busan → Rotterdam</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Route #NSR-2023-11 (북극항로)</p>
                     </div>
-                    <div class="card">
-                        <h3>항로 정보</h3>
-                        <div class="metric">
-                            <span class="label">출발지</span>
-                            <span class="value" id="report-origin">-</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">도착지</span>
-                            <span class="value" id="report-dest">-</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3>수량 정보</h3>
-                        <div class="metric">
-                            <span class="label">TEU</span>
-                            <span class="value" id="report-teu">-</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">계절</span>
-                            <span class="value" id="report-season">-</span>
+                    <!-- Circular Score -->
+                    <div class="relative size-16 shrink-0 flex items-center justify-center">
+                        <svg class="size-full -rotate-90" viewbox="0 0 36 36">
+                            <path class="text-slate-200 dark:text-slate-700"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="currentColor" stroke-width="3"></path>
+                            <path class="text-primary"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-linecap="round"
+                                stroke-width="3"></path>
+                        </svg>
+                        <div class="absolute flex flex-col items-center justify-center text-xs font-bold text-primary">
+                            <span id="report-score">85점</span>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- 경제성 분석 -->
-            <section>
-                <h2>💰 경제성 분석</h2>
-                <div class="comparison-cards">
-                    <div class="card">
-                        <h3>수에즈 항로</h3>
-                        <div class="metric">
-                            <span class="label">총 비용</span>
-                            <span class="value" id="report-suez-cost">$18,000</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">소요 시간</span>
-                            <span class="value" id="report-suez-days">40일</span>
-                        </div>
+                <!-- Map Preview -->
+                <div class="w-full bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden relative aspect-[2/1]">
+                    <div class="absolute inset-0 bg-cover bg-center"
+                        style='background-image: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop");'>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
-                    <div class="card highlight">
-                        <h3>북극항로 (NSR)</h3>
-                        <div class="metric">
-                            <span class="label">총 비용</span>
-                            <span class="value" id="report-nsr-cost">$13,000</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">소요 시간</span>
-                            <span class="value" id="report-nsr-days">25일</span>
-                        </div>
-                    </div>
-                    <div class="card savings">
-                        <h3>절감 효과</h3>
-                        <div class="metric">
-                            <span class="label">비용 절감</span>
-                            <span class="value" id="report-save-cost">$5,000 (27.8%)</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">시간 절감</span>
-                            <span class="value" id="report-save-days">15일 (37.5%)</span>
-                        </div>
+                    <div class="absolute bottom-3 left-3 text-white text-xs font-medium px-2 py-1 bg-black/40 backdrop-blur-md rounded"
+                        id="report-total-dist">
+                        총 거리: 12,700 km
                     </div>
                 </div>
-            </section>
-
-            <!-- 리스크 분석 -->
-            <section>
-                <h2>⚠️ 리스크 분석</h2>
-                <div class="comparison-cards">
-                    <div class="card">
-                        <h3>해빙 리스크</h3>
-                        <div class="metric">
-                            <span class="label">여름철</span>
-                            <span class="value" style="color: #4CAF50;">낮음</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">겨울철</span>
-                            <span class="value" style="color: #FF9800;">중간</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3>기상 리스크</h3>
-                        <div class="metric">
-                            <span class="label">여름철</span>
-                            <span class="value" style="color: #4CAF50;">낮음</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">겨울철</span>
-                            <span class="value" style="color: #F44336;">높음</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3>종합 평가</h3>
-                        <div class="metric">
-                            <span class="label">안전도</span>
-                            <span class="value" id="safety-level">중간</span>
-                        </div>
-                        <div class="metric">
-                            <span class="label">권장도</span>
-                            <span class="value" id="recommend-level">권장</span>
-                        </div>
-                    </div>
+            </div>
+            <!-- AI Executive Summary -->
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="material-symbols-outlined text-primary" style="font-size: 20px;">auto_awesome</span>
+                    <h3 class="text-slate-900 dark:text-white text-lg font-bold">AI 핵심 요약</h3>
                 </div>
-            </section>
-
-            <!-- 품목 추천 -->
-            <section>
-                <h2>📦 추천 품목</h2>
-                <div class="recommendation-box">
-                    <p><strong>북극항로에 적합한 품목:</strong></p>
-                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 2;">
-                        <li>LNG (액화천연가스) - 운송 시간 단축 효과 큼</li>
-                        <li>컨테이너 화물 - 비용 절감 효과 우수</li>
-                        <li>고부가가치 제품 - 시간 민감도 높은 품목</li>
-                        <li>냉동/냉장 화물 - 운송 기간 단축으로 품질 유지</li>
+                <div
+                    class="bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20 rounded-xl p-5 border border-primary/20">
+                    <p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed font-medium mb-3"
+                        id="ai-summary-text">
+                        이번 북극항로(NSR) 경로는 기존 수에즈 운하 경로 대비 <span class="text-primary font-bold">거리 40% 단축</span> 효과가 있습니다.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary mt-0.5"
+                                style="font-size: 18px;">savings</span>
+                            <span class="text-sm text-slate-600 dark:text-slate-300"><span
+                                    class="font-bold text-slate-900 dark:text-white">비용 절감:</span> <span
+                                    id="report-cost-save">$5,000 (27%)</span></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-primary mt-0.5"
+                                style="font-size: 18px;">schedule</span>
+                            <span class="text-sm text-slate-600 dark:text-slate-300"><span
+                                    class="font-bold text-slate-900 dark:text-white">시간 단축:</span> <span
+                                    id="report-time-save">15일 (37%)</span></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-green-600 mt-0.5"
+                                style="font-size: 18px;">eco</span>
+                            <span class="text-sm text-slate-600 dark:text-slate-300"><span
+                                    class="font-bold text-slate-900 dark:text-white">탄소 배출:</span> <span
+                                    id="report-co2-save">-1,245 ton</span></span>
+                        </li>
                     </ul>
                 </div>
-            </section>
-
-            <!-- 최종 추천 -->
-            <section class="ai-recommendation">
-                <h2>💡 최종 추천</h2>
-                <div class="recommendation-box">
-                    <p id="final-recommendation">
-                        현재 입력하신 조건에서 <strong>북극항로 활용을 권장</strong>합니다.
-                        수에즈 항로 대비 약 27.8%의 비용 절감과 37.5%의 시간 단축 효과가 예상됩니다.
-                        여름철 운항 시 리스크가 낮아 안전한 운송이 가능합니다.
-                    </p>
-                </div>
-            </section>
-
-            <div style="text-align: center; margin-top: 30px;">
-                <button onclick="window.print()" class="btn-secondary">📄 PDF 저장</button>
-                <button onclick="window.location.href='input.html'" class="btn-primary"
-                    style="width: auto; padding: 12px 32px;">새로운 분석</button>
             </div>
-        </main>
-    </div>
+            <!-- Detailed Analysis Accordions -->
+            <div class="flex flex-col gap-4">
+                <h3 class="text-slate-900 dark:text-white text-lg font-bold px-1">상세 분석</h3>
+                <!-- Cost Analysis -->
+                <div
+                    class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden transition-all">
+                    <details class="w-full" open>
+                        <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">attach_money</span>
+                                </div>
+                                <span class="font-semibold text-slate-900 dark:text-white">물류 비용 분석</span>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-400">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4 border-t border-slate-50 dark:border-slate-700/50 pt-4">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs text-slate-500">예상 총 비용</span>
+                                <span class="text-lg font-bold text-slate-900 dark:text-white"
+                                    id="detail-cost-total">$13,000</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-primary font-medium">NSR (제안)</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary w-[73%] rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-500">Suez (기존)</span>
+                                        <span class="text-slate-500" id="detail-cost-suez">$18,000</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                        <div class="h-full bg-slate-300 dark:bg-slate-500 w-[100%] rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
 
-    <script src="js/calculator.js"></script>
+                <!-- Recommendations -->
+                <div
+                    class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 overflow-hidden transition-all">
+                    <details class="w-full">
+                        <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-8 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-500">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">recommend</span>
+                                </div>
+                                <span class="font-semibold text-slate-900 dark:text-white">품목 추천</span>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-400">expand_more</span>
+                        </summary>
+                        <div class="px-4 pb-4 border-t border-slate-50 dark:border-slate-700/50 pt-4">
+                            <div id="ai-recommendations-list"
+                                class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                <!-- JS will populate -->
+                                <p>• LED/반도체 등 시간 민감 화물 적합</p>
+                                <p>• 냉동/냉장 화물 품질 유지 유리</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+            <!-- Download Section -->
+            <div
+                class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 flex flex-col gap-4">
+                <div class="flex gap-4">
+                    <div
+                        class="w-16 h-20 bg-white dark:bg-slate-700 shadow-sm border border-slate-200 dark:border-slate-600 rounded flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-red-500 text-3xl">picture_as_pdf</span>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm">상세 분석 리포트 PDF</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">모든 분석 데이터와 차트가 포함된 정식 보고서입니다. (2.4MB)
+                        </p>
+                    </div>
+                </div>
+                <button onclick="window.print()"
+                    class="w-full h-12 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-lg shadow-primary/20">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+                    PDF 다운로드
+                </button>
+            </div>
+        </div>
+    </div>
     <script src="js/report.js"></script>
 </body>
 
