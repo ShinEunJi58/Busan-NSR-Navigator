@@ -139,82 +139,232 @@ Phase 4 (배포): ☐☐☐☐☐ 0%
 
 > JavaScript 로직 및 API 연동
 
-### Epic 3.1: 기본 JavaScript 구조
+### Epic 3.1: 기본 JavaScript 구조 (TDD)
 
-- [ ] `js/main.js` (메인 로직)
-  - [ ] 페이지 로드 이벤트
-  - [ ] 네비게이션 로직
-  - [ ] 세션 스토리지 관리
-- [ ] `js/utils.js` (유틸리티)
-  - [ ] 데이터 로딩 함수
-  - [ ] 포맷팅 함수 (숫자, 날짜)
-  - [ ] 에러 처리 함수
+#### Step 1: utils.js 테스트 작성
+- [ ] `tests/utils.test.js` 파일 생성
+- [ ] formatNumber() 테스트 작성
+  - [ ] 천 단위 콤마 테스트
+  - [ ] 소수점 처리 테스트
+  - [ ] 음수 처리 테스트
+- [ ] formatDate() 테스트 작성
+  - [ ] 날짜 포맷팅 테스트
+  - [ ] 잘못된 날짜 처리 테스트
+- [ ] validateInput() 테스트 작성
+  - [ ] 빈 값 검증 테스트
+  - [ ] 숫자 검증 테스트
+  - [ ] 문자열 검증 테스트
+
+#### Step 2: 테스트 실행 (Red)
+- [ ] `npm test` 실행
+- [ ] 실패 확인 (함수 미정의)
+
+#### Step 3: utils.js 코드 작성
+- [ ] `js/utils.js` 파일 생성
+- [ ] formatNumber() 함수 구현
+- [ ] formatDate() 함수 구현
+- [ ] validateInput() 함수 구현
+
+#### Step 4: 테스트 재실행 (Green)
+- [ ] `npm test` 재실행
+- [ ] 모든 테스트 통과 확인
+
+#### Step 5: 리팩토링 및 검증
+- [ ] 코드 리팩토링
+- [ ] `npm run test:coverage` 실행
+- [ ] 커버리지 100% 확인
+
+#### Step 6: main.js 작성 (UI - 테스트 제외)
+- [ ] `js/main.js` 파일 생성
+- [ ] 페이지 로드 이벤트 추가
+- [ ] 네비게이션 로직 추가
+- [ ] 세션 스토리지 관리 추가
 
 **예상 시간:** 30분
 
 ---
 
-### Epic 3.2: AI 에이전트 구현
+### Epic 3.2: AI 에이전트 구현 (TDD)
 
-- [ ] `js/ai-agent.js` 작성
-  - [ ] NSRAgent 클래스 생성
-  - [ ] 지식 베이스 로딩
-  - [ ] 키워드 검색 함수
-    - [ ] extractKeywords()
-    - [ ] calculateRelevance()
-    - [ ] searchKnowledge()
-  - [ ] AI API 호출 함수
-    - [ ] ask() 함수
-    - [ ] 프롬프트 구성
-    - [ ] Fetch API 호출
-    - [ ] 에러 처리
-  - [ ] 테스트 (10개 질문)
+#### Step 1: AI 에이전트 테스트 작성
+- [ ] `tests/ai-agent.test.js` 파일 생성
+- [ ] extractKeywords() 테스트 작성
+  - [ ] 불용어 제거 테스트
+  - [ ] 소문자 변환 테스트
+  - [ ] 빈 문자열 처리 테스트
+  - [ ] 특수문자 처리 테스트
+- [ ] calculateRelevance() 테스트 작성
+  - [ ] 완전 일치 테스트
+  - [ ] 부분 일치 테스트
+  - [ ] 불일치 테스트
+  - [ ] 빈 배열 처리 테스트
+- [ ] searchKnowledge() 테스트 작성
+  - [ ] 관련 문서 검색 테스트
+  - [ ] 상위 3개 반환 테스트
+  - [ ] 점수 순 정렬 테스트
+  - [ ] 관련 문서 없을 때 테스트
+- [ ] ask() 함수 Mock 테스트 작성
+  - [ ] API 호출 Mock 설정
+  - [ ] 정상 응답 테스트
+  - [ ] 에러 처리 테스트
+
+#### Step 2: 테스트 실행 (Red)
+- [ ] `npm test` 실행
+- [ ] 실패 확인 (클래스 미정의)
+
+#### Step 3: AI 에이전트 코드 작성
+- [ ] `js/ai-agent.js` 파일 생성
+- [ ] NSRAgent 클래스 생성
+- [ ] init() 함수 구현 (지식 베이스 로딩)
+- [ ] extractKeywords() 함수 구현
+- [ ] calculateRelevance() 함수 구현
+- [ ] searchKnowledge() 함수 구현
+- [ ] ask() 함수 구현
+  - [ ] 프롬프트 구성
+  - [ ] Fetch API 호출
+  - [ ] 에러 처리
+
+#### Step 4: 테스트 재실행 (Green)
+- [ ] `npm test` 재실행
+- [ ] 모든 테스트 통과 확인
+
+#### Step 5: Edge Case 테스트 추가
+- [ ] 대용량 텍스트 처리 테스트
+- [ ] 특수 문자 포함 질문 테스트
+- [ ] API 타임아웃 테스트
+
+#### Step 6: 리팩토링 및 검증
+- [ ] 코드 리팩토링
+- [ ] `npm run test:coverage` 실행
+- [ ] 커버리지 95% 이상 확인
 
 **예상 시간:** 2시간
 
 ---
 
-### Epic 3.3: 경제성 계산 구현
+### Epic 3.3: 경제성 계산 구현 (TDD)
 
-- [ ] `js/calculator.js` 작성
-  - [ ] Calculator 클래스
-  - [ ] calculate() 함수
-    - [ ] 항로 데이터 로딩
-    - [ ] 비용 계산
-    - [ ] CO₂ 계산
-  - [ ] compare() 함수
-    - [ ] 수에즈 vs NSR 비교
-    - [ ] 절감액 계산
-  - [ ] 테스트 (5개 시나리오)
+#### Step 1: Calculator 테스트 작성
+- [ ] `tests/calculator.test.js` 파일 생성
+- [ ] calculate() 테스트 작성
+  - [ ] 수에즈 항로 비용 계산 테스트
+  - [ ] NSR 여름 비용 계산 테스트
+  - [ ] NSR 겨울 비용 계산 테스트 (20% 할증)
+  - [ ] 잘못된 항로명 처리 테스트
+  - [ ] 음수 TEU 처리 테스트
+- [ ] compare() 테스트 작성
+  - [ ] 수에즈 vs NSR 비교 테스트
+  - [ ] 절감액 계산 정확도 테스트
+  - [ ] 시간 절감 계산 테스트
+  - [ ] CO₂ 절감 계산 테스트
+- [ ] calculateCO2() 테스트 작성
+  - [ ] CO₂ 계산 정확도 테스트
+  - [ ] 0 TEU 처리 테스트
+
+#### Step 2: 테스트 실행 (Red)
+- [ ] `npm test` 실행
+- [ ] 실패 확인 (클래스 미정의)
+
+#### Step 3: Calculator 코드 작성
+- [ ] `js/calculator.js` 파일 생성
+- [ ] Calculator 클래스 생성
+- [ ] loadData() 함수 구현
+- [ ] calculate() 함수 구현
+  - [ ] 항로 데이터 로딩
+  - [ ] 비용 계산 로직
+  - [ ] CO₂ 계산 호출
+- [ ] compare() 함수 구현
+  - [ ] 수에즈 vs NSR 계산
+  - [ ] 절감액 계산
+- [ ] calculateCO2() 함수 구현
+
+#### Step 4: 테스트 재실행 (Green)
+- [ ] `npm test` 재실행
+- [ ] 모든 테스트 통과 확인
+
+#### Step 5: 리팩토링 및 검증
+- [ ] 코드 리팩토링 (SOLID 원칙 적용)
+- [ ] `npm run test:coverage` 실행
+- [ ] 커버리지 95% 이상 확인
 
 **예상 시간:** 1시간
 
 ---
 
-### Epic 3.4: 차트 시각화 구현
+### Epic 3.4: 차트 시각화 구현 (UI - 테스트 제외)
 
-- [ ] `js/charts.js` 작성
-  - [ ] Chart.js 초기화
-  - [ ] 비용 비교 차트
-    - [ ] 막대 그래프
-    - [ ] 데이터 바인딩
-  - [ ] 시간 비교 차트
-  - [ ] CO₂ 비교 차트
-  - [ ] 반응형 설정
+- [ ] `js/charts.js` 파일 생성
+- [ ] Chart.js 초기화
+  - [ ] CDN 로드 확인
+  - [ ] Canvas 요소 선택
+- [ ] 비용 비교 차트 구현
+  - [ ] 막대 그래프 설정
+  - [ ] 데이터 바인딩
+  - [ ] 색상 및 레이블 설정
+- [ ] 시간 비교 차트 구현
+  - [ ] 막대 그래프 설정
+  - [ ] 데이터 바인딩
+- [ ] CO₂ 비교 차트 구현
+  - [ ] 막대 그래프 설정
+  - [ ] 데이터 바인딩
+- [ ] 반응형 설정
+  - [ ] 모바일 크기 조정
+  - [ ] 태블릿 크기 조정
+- [ ] 브라우저에서 테스트
+  - [ ] 차트 렌더링 확인
+  - [ ] 반응형 동작 확인
 
 **예상 시간:** 1시간
 
 ---
 
-### Epic 3.5: 리스크 모니터링 \u0026 추천
+### Epic 3.5: 리스크 모니터링 & 추천 (TDD)
 
-- [ ] `js/risk-monitor.js` 작성
-  - [ ] 리스크 데이터 로딩
-  - [ ] 해빙 농도 표시
-  - [ ] 지정학 리스크 표시
-- [ ] `js/recommender.js` 작성
-  - [ ] 품목 추천 로직
-  - [ ] 추천 결과 표시
+#### Step 1: risk-monitor.js 테스트 작성
+- [ ] `tests/risk-monitor.test.js` 파일 생성
+- [ ] analyzeRisk() 테스트 작성
+  - [ ] 해빙 농도 분석 테스트
+  - [ ] 안전 레벨 판단 테스트
+  - [ ] 경고 레벨 판단 테스트
+  - [ ] 위험 레벨 판단 테스트
+- [ ] getRiskLevel() 테스트 작성
+  - [ ] 레벨 계산 정확도 테스트
+  - [ ] 경계값 테스트
+
+#### Step 2: recommender.js 테스트 작성
+- [ ] `tests/recommender.test.js` 파일 생성
+- [ ] recommend() 테스트 작성
+  - [ ] 제조업 추천 테스트
+  - [ ] 식품업 추천 테스트
+  - [ ] 패션업 추천 테스트
+  - [ ] 전자업 추천 테스트
+- [ ] calculateScore() 테스트 작성
+  - [ ] 점수 계산 정확도 테스트
+  - [ ] 납기 민감도 반영 테스트
+
+#### Step 3: 테스트 실행 (Red)
+- [ ] `npm test` 실행
+- [ ] 실패 확인
+
+#### Step 4: 코드 작성
+- [ ] `js/risk-monitor.js` 파일 생성
+  - [ ] RiskMonitor 클래스 생성
+  - [ ] loadData() 함수 구현
+  - [ ] analyzeRisk() 함수 구현
+  - [ ] getRiskLevel() 함수 구현
+- [ ] `js/recommender.js` 파일 생성
+  - [ ] ItemRecommender 클래스 생성
+  - [ ] recommend() 함수 구현
+  - [ ] calculateScore() 함수 구현
+
+#### Step 5: 테스트 재실행 (Green)
+- [ ] `npm test` 재실행
+- [ ] 모든 테스트 통과 확인
+
+#### Step 6: 리팩토링 및 검증
+- [ ] 코드 리팩토링
+- [ ] `npm run test:coverage` 실행
+- [ ] 커버리지 90% 이상 확인
 
 **예상 시간:** 30분
 
