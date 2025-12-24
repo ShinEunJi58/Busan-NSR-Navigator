@@ -1,12 +1,31 @@
 /* CSS 변수 */
 :root {
     --primary: #1E88E5;
+    --primary-dark: #1565C0;
+    --primary-light: #42A5F5;
     --secondary: #FF9800;
+    --secondary-dark: #F57C00;
     --success: #4CAF50;
+    --success-light: #81C784;
+    --warning: #FF9800;
+    --danger: #F44336;
     --bg: #F5F7FA;
+    --bg-light: #FAFBFC;
     --text: #263238;
+    --text-light: #546E7A;
+    --text-muted: #90A4AE;
     --card-bg: #FFFFFF;
     --sidebar-bg: #1A237E;
+    --sidebar-hover: #283593;
+    --border: #E0E0E0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-lg: rgba(0, 0, 0, 0.15);
+
+    /* 그라데이션 */
+    --gradient-primary: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+    --gradient-success: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    --gradient-warning: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+    --gradient-card: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
 }
 
 * {
@@ -210,15 +229,25 @@ select:focus {
 
 .card h3 {
     color: var(--primary);
-    margin-bottom: 20px;
-    font-size: 1.3rem;
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .metric {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #F0F0F0;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.2s;
+}
+
+.metric:hover {
+    padding-left: 8px;
+    background: rgba(30, 136, 229, 0.02);
+    border-radius: 8px;
 }
 
 .metric:last-child {
@@ -226,14 +255,16 @@ select:focus {
 }
 
 .metric .label {
-    color: #757575;
+    color: var(--text-light);
     font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .metric .value {
     font-weight: 700;
     color: var(--primary);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.3px;
 }
 
 /* 차트 */
