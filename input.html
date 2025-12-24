@@ -1,125 +1,232 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html class="light" lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>데이터 입력 - KOTRA 북극항로 네비게이터</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>KOTRA Polaris-Busan Data Input</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f2c59",
+                        "primary-light": "#1e3a8a",
+                        "accent": "#0ea5e9",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0b1120",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1e293b",
+                        "border-light": "#E2E8F0",
+                        "border-dark": "#2D3748",
+                        "text-primary": "#1A202C",
+                        "text-secondary": "#718096",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                        "body": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.625rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 8px -1px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
 </head>
 
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="logo">🚢 NSR Navigator</div>
-            <nav>
-                <a href="index.html">🏠 홈</a>
-                <a href="dashboard.html">📊 대시보드</a>
-                <a href="input.html" class="active">📝 데이터 입력</a>
-                <a href="report.html">📈 분석 보고서</a>
-                <a href="ai-chat.html">🤖 AI 상담</a>
-            </nav>
-        </aside>
-
-        <main class="main-content">
-            <header class="page-header">
-                <h1>📝 상세 데이터 입력</h1>
-                <p>정확한 분석을 위한 상세 정보를 입력하세요</p>
-            </header>
-
-            <section>
-                <h2>기본 정보</h2>
-                <div class="input-group">
-                    <label for="company">회사명:</label>
-                    <input type="text" id="company" placeholder="예: ABC 무역">
-                </div>
-                <div class="input-group">
-                    <label for="cargo-type">화물 유형:</label>
-                    <select id="cargo-type">
-                        <option value="container">컨테이너</option>
-                        <option value="bulk">벌크</option>
-                        <option value="lng">LNG</option>
-                        <option value="other">기타</option>
-                    </select>
-                </div>
-            </section>
-
-            <section>
-                <h2>항로 정보</h2>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="origin">출발지:</label>
-                        <select id="origin">
-                            <option value="busan">부산</option>
-                            <option value="shanghai">상하이</option>
-                            <option value="singapore">싱가포르</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="destination">도착지:</label>
-                        <select id="destination">
-                            <option value="rotterdam">로테르담</option>
-                            <option value="hamburg">함부르크</option>
-                            <option value="london">런던</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="teu-input">컨테이너 수량 (TEU):</label>
-                        <input type="number" id="teu-input" value="10" min="1">
-                    </div>
-                    <div class="input-group">
-                        <label for="season-input">계절:</label>
-                        <select id="season-input">
-                            <option value="summer">여름 (7-10월)</option>
-                            <option value="winter">겨울 (11-6월)</option>
-                        </select>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>추가 옵션</h2>
-                <div class="input-group">
-                    <label>
-                        <input type="checkbox" id="insurance"> 보험 포함
-                    </label>
-                </div>
-                <div class="input-group">
-                    <label>
-                        <input type="checkbox" id="priority"> 우선 배송
-                    </label>
-                </div>
-            </section>
-
-            <div style="text-align: center; margin-top: 30px;">
-                <button onclick="submitData()" class="btn-primary" style="width: auto; padding: 16px 48px;">분석 시작
-                    →</button>
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-text-primary dark:text-gray-100 antialiased selection:bg-primary selection:text-white">
+    <div
+        class="relative flex h-full min-h-screen w-full flex-col overflow-hidden pb-24 max-w-md mx-auto border-x border-slate-200 dark:border-slate-800 shadow-2xl">
+        <header
+            class="sticky top-0 z-30 flex items-center justify-between bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md px-5 py-4 border-b border-border-light dark:border-border-dark shadow-sm">
+            <h2 class="text-text-primary dark:text-white text-[1.15rem] font-bold leading-tight tracking-tight flex-1">
+                Data Input</h2>
+            <div class="flex items-center gap-3">
+                <button
+                    class="flex items-center justify-center rounded-full h-9 w-9 text-text-secondary dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
+                    <span class="material-symbols-outlined text-[22px]">settings</span>
+                </button>
             </div>
+        </header>
+        <main class="flex-1 overflow-y-auto no-scrollbar w-full">
+            <section class="px-5 py-4">
+                <div
+                    class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-card border border-border-light dark:border-border-dark p-5">
+                    <div class="flex items-center gap-2 mb-5">
+                        <span class="material-symbols-outlined text-primary text-[22px]">edit_document</span>
+                        <h3 class="text-lg font-bold text-text-primary dark:text-white">새 물류 등록</h3>
+                    </div>
+                    <form id="input-form" onsubmit="event.preventDefault(); window.location.href='report.html';">
+                        <div class="space-y-4">
+                            <div
+                                class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-border-light dark:border-border-dark">
+                                <p class="text-xs font-bold text-text-secondary uppercase tracking-wider mb-3">운송 경로</p>
+                                <div class="relative flex flex-col gap-3">
+                                    <div class="relative">
+                                        <label
+                                            class="absolute left-3 top-3 text-text-secondary dark:text-gray-500 pointer-events-none">
+                                            <span class="material-symbols-outlined text-[20px]">flight_takeoff</span>
+                                        </label>
+                                        <input id="departure"
+                                            class="w-full pl-10 pr-4 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-gray-400"
+                                            value="Busan (부산)" readonly type="text" />
+                                    </div>
+                                    <div
+                                        class="absolute left-5 top-[44px] bottom-[44px] w-0.5 bg-border-light dark:bg-slate-700 -z-0">
+                                    </div>
+                                    <div class="relative">
+                                        <label
+                                            class="absolute left-3 top-3 text-text-secondary dark:text-gray-500 pointer-events-none">
+                                            <span class="material-symbols-outlined text-[20px]">flight_land</span>
+                                        </label>
+                                        <select id="destination"
+                                            class="w-full pl-10 pr-4 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                                            <option value="rotterdam">Rotterdam (로테르담)</option>
+                                            <option value="hamburg">Hamburg (함부르크)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">화물
+                                        종류</label>
+                                    <div class="relative">
+                                        <input id="cargo-type"
+                                            class="w-full pl-4 pr-3 py-3 bg-white dark:bg-slate-900 border border-border-light dark:border-border-dark rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                            placeholder="예: 전자제품" type="text" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">컨테이너
+                                        (TEU)</label>
+                                    <div class="relative">
+                                        <input id="teu"
+                                            class="w-full pl-4 pr-3 py-3 bg-white dark:bg-slate-900 border border-border-light dark:border-border-dark rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                            value="10" type="number" />
+                                        <span
+                                            class="absolute right-3 top-3 text-xs text-text-secondary font-medium mt-0.5">TEU</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">출항 계절</label>
+                                <div class="relative">
+                                    <span
+                                        class="absolute left-3 top-3 text-text-secondary dark:text-gray-500 pointer-events-none">
+                                        <span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                                    </span>
+                                    <select id="season"
+                                        class="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all appearance-none">
+                                        <option value="summer">Summer (7월-10월) - 해빙 감소</option>
+                                        <option value="winter">Winter (11월-6월) - 쇄빙선 필수</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">관련 서류
+                                    (Invoice, B/L)</label>
+                                <div
+                                    class="relative flex flex-col items-center justify-center border-2 border-dashed border-primary/30 bg-primary/5 hover:bg-primary/10 dark:bg-primary/10 dark:hover:bg-primary/20 rounded-xl p-6 transition-colors cursor-pointer group">
+                                    <div
+                                        class="h-10 w-10 rounded-full bg-surface-light dark:bg-slate-800 shadow-sm flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-primary text-xl">cloud_upload</span>
+                                    </div>
+                                    <p class="text-sm font-semibold text-primary mb-0.5">파일 업로드</p>
+                                    <p class="text-[11px] text-text-secondary text-center">PDF, JPG, PNG 형식 지원<br />(최대
+                                        10MB)</p>
+                                </div>
+                            </div>
+                            <button type="submit"
+                                class="w-full mt-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-primary/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">analytics</span>
+                                <span>등록 및 분석 시작</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </main>
+        <nav
+            class="sticky bottom-0 z-50 bg-white/90 dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe pt-1">
+            <div class="flex justify-around items-center px-4 pb-2 pt-1">
+                <a href="dashboard.html"
+                    class="group flex flex-col items-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+                    <span class="material-symbols-outlined text-[24px]">dashboard</span>
+                    <span class="text-[10px] font-medium">Home</span>
+                </a>
+                <a href="input.html" class="group flex flex-col items-center gap-1 p-2 w-16">
+                    <div
+                        class="p-1 rounded-full bg-primary/10 dark:bg-primary/30 group-hover:bg-primary/20 transition-colors">
+                        <span
+                            class="material-symbols-outlined text-primary dark:text-blue-400 text-[24px]">edit_document</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-primary dark:text-blue-400">Input</span>
+                </a>
+                <a href="report.html"
+                    class="group flex flex-col items-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+                    <span class="material-symbols-outlined text-[24px]">analytics</span>
+                    <span class="text-[10px] font-medium">Report</span>
+                </a>
+                <a href="ai-chat.html"
+                    class="group flex flex-col items-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+                    <span class="material-symbols-outlined text-[24px]">smart_toy</span>
+                    <span class="text-[10px] font-medium">AI Chat</span>
+                </a>
+            </div>
+            <div class="h-4 w-full bg-transparent flex justify-center items-center">
+                <div class="w-32 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+            </div>
+        </nav>
     </div>
-
     <script>
-        function submitData() {
-            const teu = document.getElementById('teu-input').value;
-            const season = document.getElementById('season-input').value;
-
-            // 데이터를 localStorage에 저장
-            localStorage.setItem('analysisData', JSON.stringify({
-                company: document.getElementById('company').value,
-                cargoType: document.getElementById('cargo-type').value,
-                origin: document.getElementById('origin').value,
-                destination: document.getElementById('destination').value,
-                teu: teu,
-                season: season,
-                insurance: document.getElementById('insurance').checked,
-                priority: document.getElementById('priority').checked
-            }));
-
-            // 보고서 페이지로 이동
+        document.getElementById('input-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const data = {
+                from: "부산",
+                to: document.getElementById('destination').value,
+                teu: document.getElementById('teu').value,
+                cargo: document.getElementById('cargo-type').value,
+                season: document.getElementById('season').value,
+                isIcebreaker: document.getElementById('season').value === 'winter'
+            };
+            localStorage.setItem('simulationData', JSON.stringify(data));
             window.location.href = 'report.html';
-        }
+        });
     </script>
 </body>
 

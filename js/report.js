@@ -1,69 +1,75 @@
 // 보고서 페이지 로직
 document.addEventListener('DOMContentLoaded', function () {
-    // localStorage에서 데이터 가져오기
-    const data = JSON.parse(localStorage.getItem('analysisData') || '{}');
+    // localStorage에서 데이터 가져오기 (input.html에서 저장한 키: simulationData)
+    const data = JSON.parse(localStorage.getItem('simulationData') || '{"teu": 10, "season": "summer"}');
 
-    // 기본 정보 표시
-    document.getElementById('report-company').textContent = data.company || '미입력';
-    document.getElementById('report-cargo').textContent = getCargoTypeName(data.cargoType);
-    document.getElementById('report-origin').textContent = getLocationName(data.origin);
-    document.getElementById('report-dest').textContent = getLocationName(data.destination);
-    document.getElementById('report-teu').textContent = data.teu || '10';
-    document.getElementById('report-season').textContent = data.season === 'summer' ? '여름' : '겨울';
+    // 1. 메타 데이터 업데이트
+    const today = new Date().toLocaleDateString();
+    const dateEl = document.getElementById('report-date');
+    if (dateEl) dateEl.textContent = today;
 
-    // 경제성 계산
+    // 2. 계산 실행
     const teu = parseInt(data.teu) || 10;
     const season = data.season || 'summer';
     const result = calculator.calculate(teu, season);
 
-    // 결과 표시
-    document.getElementById('report-suez-cost').textContent = '$' + result.suez.cost.toLocaleString();
-    document.getElementById('report-suez-days').textContent = result.suez.days + '일';
-    document.getElementById('report-nsr-cost').textContent = '$' + result.nsr.cost.toLocaleString();
-    document.getElementById('report-nsr-days').textContent = result.nsr.days + '일';
+    // 3. 점수 계산 (단순화된 로직)
+    // 여름이면 +10점, 비용절감율 * 2
+    const costSavingPercent = ((result.savings.cost / result.suez.cost) * 100);
+    let score = Math.min(99, Math.floor(60 + (season === 'summer' ? 10 : 0) + (costSavingPercent / 2)));
+    const scoreEl = document.getElementById('report-score');
+    if (scoreEl) scoreEl.textContent = score + '점';
 
-    const costSavingPercent = ((result.savings.cost / result.suez.cost) * 100).toFixed(1);
-    const timeSavingPercent = ((result.savings.days / result.suez.days) * 100).toFixed(1);
+    // 4. 총 거리 업데이트
+    const distEl = document.getElementById('report-total-dist');
+    if (distEl) distEl.textContent = `총 거리: ${result.nsr.distance.toLocaleString()} km`;
 
-    document.getElementById('report-save-cost').textContent =
-        `$${result.savings.cost.toLocaleString()} (${costSavingPercent}%)`;
-    document.getElementById('report-save-days').textContent =
-        `${result.savings.days}일 (${timeSavingPercent}%)`;
+    // 5. 핵심 요약 업데이트
+    const summaryElement = document.getElementById('ai-summary-text');
+    const distSavingPercent = ((result.savings.distance / result.suez.distance) * 100).toFixed(0);
+    if (summaryElement) summaryElement.innerHTML = `이번 북극항로(NSR) 경로는 기존 수에즈 운하 경로 대비 <span class="text-primary font-bold">거리 ${distSavingPercent}% 단축</span> 효과가 있습니다.`;
 
-    // 리스크 평가
-    const safetyLevel = season === 'summer' ? '안전' : '주의';
-    const recommendLevel = costSavingPercent > 20 ? '적극 권장' : '권장';
+    // 6. 리스트 항목 업데이트
+    const costSaveEl = document.getElementById('report-cost-save');
+    if (costSaveEl) costSaveEl.textContent = `$${result.savings.cost.toLocaleString()} (${costSavingPercent.toFixed(0)}%)`;
 
-    document.getElementById('safety-level').textContent = safetyLevel;
-    document.getElementById('recommend-level').textContent = recommendLevel;
+    const timeSavingPercent = ((result.savings.days / result.suez.days) * 100).toFixed(0);
+    const timeSaveEl = document.getElementById('report-time-save');
+    if (timeSaveEl) timeSaveEl.textContent = `${result.savings.days}일 (${timeSavingPercent}%)`;
 
-    // 최종 추천
-    const recommendation = `
-        현재 입력하신 조건에서 <strong>북극항로 활용을 ${recommendLevel}</strong>합니다. 
-        수에즈 항로 대비 약 ${costSavingPercent}%의 비용 절감과 ${timeSavingPercent}%의 시간 단축 효과가 예상됩니다. 
-        ${season === 'summer' ? '여름철 운항 시 리스크가 낮아 안전한 운송이 가능합니다.' : '겨울철 운항은 쇄빙선 지원이 필요하며 기상 리스크를 고려해야 합니다.'}
-    `;
-    document.getElementById('final-recommendation').innerHTML = recommendation;
+    const co2SaveEl = document.getElementById('report-co2-save');
+    if (co2SaveEl) co2SaveEl.textContent = `-${result.savings.co2.toLocaleString()} ton`;
+
+    // 7. 상세 분석 - 비용
+    const detailCostTotal = document.getElementById('detail-cost-total');
+    if (detailCostTotal) detailCostTotal.textContent = `$${result.nsr.cost.toLocaleString()}`;
+
+    const detailCostSuez = document.getElementById('detail-cost-suez');
+    if (detailCostSuez) detailCostSuez.textContent = `$${result.suez.cost.toLocaleString()}`;
+
+    // 8. AI 추천 리스트 구성
+    const recList = document.getElementById('ai-recommendations-list');
+    if (recList) {
+        recList.innerHTML = ''; // 초기화
+
+        let recommendations = [];
+        if (season === 'summer') {
+            recommendations.push(`• ☀️ <strong>여름철 최적기:</strong> 해빙 감소로 쇄빙선 의존도가 낮아 비용 효율이 극대화됩니다.`);
+        } else {
+            recommendations.push(`• ❄️ <strong>겨울철 주의:</strong> 쇄빙선 비용이 발생하나, 긴급 화물 운송에는 여전히 유리합니다.`);
+        }
+
+        if (data.cargo === 'LNG' || data.cargo === 'electronic') {
+            recommendations.push(`• ⚡ <strong>시간 민감 화물:</strong> ${data.cargo} 운송 시 재고 비용 절감 효과가 탁월합니다.`);
+        }
+
+        recommendations.push(`• 📉 탄소 배출량 ${result.savings.co2}톤 감축으로 ESG 경영 목표 달성에 기여합니다.`);
+
+        recommendations.forEach(rec => {
+            const p = document.createElement('p');
+            p.className = 'mb-1';
+            p.innerHTML = rec;
+            recList.appendChild(p);
+        });
+    }
 });
-
-function getCargoTypeName(type) {
-    const types = {
-        'container': '컨테이너',
-        'bulk': '벌크',
-        'lng': 'LNG',
-        'other': '기타'
-    };
-    return types[type] || '컨테이너';
-}
-
-function getLocationName(code) {
-    const locations = {
-        'busan': '부산',
-        'shanghai': '상하이',
-        'singapore': '싱가포르',
-        'rotterdam': '로테르담',
-        'hamburg': '함부르크',
-        'london': '런던'
-    };
-    return locations[code] || code;
-}
