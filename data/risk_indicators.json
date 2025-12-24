@@ -1,0 +1,60 @@
+{
+    "risk_indicators": {
+        "ice_concentration": {
+            "summer": {
+                "level": "low",
+                "percentage": 15,
+                "description": "여름철 해빙 농도가 낮아 안전한 운항 가능"
+            },
+            "winter": {
+                "level": "medium",
+                "percentage": 65,
+                "description": "겨울철 해빙 농도가 높아 쇄빙선 지원 필요"
+            }
+        },
+        "weather": {
+            "summer": {
+                "level": "low",
+                "description": "기상 조건 양호, 안정적 운항"
+            },
+            "winter": {
+                "level": "high",
+                "description": "폭풍 및 악천후 가능성 높음"
+            }
+        },
+        "geopolitical": {
+            "level": "medium",
+            "description": "러시아 통과 시 정치적 리스크 존재"
+        }
+    },
+    "recommendations": {
+        "suitable_cargo": [
+            {
+                "name": "LNG (액화천연가스)",
+                "reason": "운송 시간 단축 효과가 크며, 냉각 유지에 유리"
+            },
+            {
+                "name": "컨테이너 화물",
+                "reason": "비용 절감 효과가 우수하며, 다양한 품목 운송 가능"
+            },
+            {
+                "name": "고부가가치 제품",
+                "reason": "시간 민감도가 높은 품목에 적합"
+            },
+            {
+                "name": "냉동/냉장 화물",
+                "reason": "운송 기간 단축으로 품질 유지 가능"
+            }
+        ],
+        "unsuitable_cargo": [
+            {
+                "name": "저가 벌크 화물",
+                "reason": "비용 절감 효과가 미미함"
+            },
+            {
+                "name": "위험물",
+                "reason": "안전 규제가 엄격하여 운송 제한"
+            }
+        ]
+    }
+}
