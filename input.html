@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 입력 - KOTRA 북극항로 네비게이터</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">🚢 NSR Navigator</div>
+            <nav>
+                <a href="index.html">🏠 홈</a>
+                <a href="dashboard.html">📊 대시보드</a>
+                <a href="input.html" class="active">📝 데이터 입력</a>
+                <a href="report.html">📈 분석 보고서</a>
+                <a href="ai-chat.html">🤖 AI 상담</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>📝 상세 데이터 입력</h1>
+                <p>정확한 분석을 위한 상세 정보를 입력하세요</p>
+            </header>
+
+            <section>
+                <h2>기본 정보</h2>
+                <div class="input-group">
+                    <label for="company">회사명:</label>
+                    <input type="text" id="company" placeholder="예: ABC 무역">
+                </div>
+                <div class="input-group">
+                    <label for="cargo-type">화물 유형:</label>
+                    <select id="cargo-type">
+                        <option value="container">컨테이너</option>
+                        <option value="bulk">벌크</option>
+                        <option value="lng">LNG</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+            </section>
+
+            <section>
+                <h2>항로 정보</h2>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="origin">출발지:</label>
+                        <select id="origin">
+                            <option value="busan">부산</option>
+                            <option value="shanghai">상하이</option>
+                            <option value="singapore">싱가포르</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="destination">도착지:</label>
+                        <select id="destination">
+                            <option value="rotterdam">로테르담</option>
+                            <option value="hamburg">함부르크</option>
+                            <option value="london">런던</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="teu-input">컨테이너 수량 (TEU):</label>
+                        <input type="number" id="teu-input" value="10" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="season-input">계절:</label>
+                        <select id="season-input">
+                            <option value="summer">여름 (7-10월)</option>
+                            <option value="winter">겨울 (11-6월)</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>추가 옵션</h2>
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="insurance"> 보험 포함
+                    </label>
+                </div>
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="priority"> 우선 배송
+                    </label>
+                </div>
+            </section>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="submitData()" class="btn-primary" style="width: auto; padding: 16px 48px;">분석 시작
+                    →</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function submitData() {
+            const teu = document.getElementById('teu-input').value;
+            const season = document.getElementById('season-input').value;
+
+            // 데이터를 localStorage에 저장
+            localStorage.setItem('analysisData', JSON.stringify({
+                company: document.getElementById('company').value,
+                cargoType: document.getElementById('cargo-type').value,
+                origin: document.getElementById('origin').value,
+                destination: document.getElementById('destination').value,
+                teu: teu,
+                season: season,
+                insurance: document.getElementById('insurance').checked,
+                priority: document.getElementById('priority').checked
+            }));
+
+            // 보고서 페이지로 이동
+            window.location.href = 'report.html';
+        }
+    </script>
+</body>
+
+</html>

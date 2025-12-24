@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분석 보고서 - KOTRA 북극항로 네비게이터</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">🚢 NSR Navigator</div>
+            <nav>
+                <a href="index.html">🏠 홈</a>
+                <a href="dashboard.html">📊 대시보드</a>
+                <a href="input.html">📝 데이터 입력</a>
+                <a href="report.html" class="active">📈 분석 보고서</a>
+                <a href="ai-chat.html">🤖 AI 상담</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>📈 종합 분석 보고서</h1>
+                <p>북극항로 활용 가능성 분석 결과</p>
+            </header>
+
+            <!-- 입력 정보 요약 -->
+            <section>
+                <h2>📋 입력 정보</h2>
+                <div class="comparison-cards">
+                    <div class="card">
+                        <h3>기본 정보</h3>
+                        <div class="metric">
+                            <span class="label">회사명</span>
+                            <span class="value" id="report-company">-</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">화물 유형</span>
+                            <span class="value" id="report-cargo">-</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>항로 정보</h3>
+                        <div class="metric">
+                            <span class="label">출발지</span>
+                            <span class="value" id="report-origin">-</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">도착지</span>
+                            <span class="value" id="report-dest">-</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>수량 정보</h3>
+                        <div class="metric">
+                            <span class="label">TEU</span>
+                            <span class="value" id="report-teu">-</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">계절</span>
+                            <span class="value" id="report-season">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 경제성 분석 -->
+            <section>
+                <h2>💰 경제성 분석</h2>
+                <div class="comparison-cards">
+                    <div class="card">
+                        <h3>수에즈 항로</h3>
+                        <div class="metric">
+                            <span class="label">총 비용</span>
+                            <span class="value" id="report-suez-cost">$18,000</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">소요 시간</span>
+                            <span class="value" id="report-suez-days">40일</span>
+                        </div>
+                    </div>
+                    <div class="card highlight">
+                        <h3>북극항로 (NSR)</h3>
+                        <div class="metric">
+                            <span class="label">총 비용</span>
+                            <span class="value" id="report-nsr-cost">$13,000</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">소요 시간</span>
+                            <span class="value" id="report-nsr-days">25일</span>
+                        </div>
+                    </div>
+                    <div class="card savings">
+                        <h3>절감 효과</h3>
+                        <div class="metric">
+                            <span class="label">비용 절감</span>
+                            <span class="value" id="report-save-cost">$5,000 (27.8%)</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">시간 절감</span>
+                            <span class="value" id="report-save-days">15일 (37.5%)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 리스크 분석 -->
+            <section>
+                <h2>⚠️ 리스크 분석</h2>
+                <div class="comparison-cards">
+                    <div class="card">
+                        <h3>해빙 리스크</h3>
+                        <div class="metric">
+                            <span class="label">여름철</span>
+                            <span class="value" style="color: #4CAF50;">낮음</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">겨울철</span>
+                            <span class="value" style="color: #FF9800;">중간</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>기상 리스크</h3>
+                        <div class="metric">
+                            <span class="label">여름철</span>
+                            <span class="value" style="color: #4CAF50;">낮음</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">겨울철</span>
+                            <span class="value" style="color: #F44336;">높음</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>종합 평가</h3>
+                        <div class="metric">
+                            <span class="label">안전도</span>
+                            <span class="value" id="safety-level">중간</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">권장도</span>
+                            <span class="value" id="recommend-level">권장</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 품목 추천 -->
+            <section>
+                <h2>📦 추천 품목</h2>
+                <div class="recommendation-box">
+                    <p><strong>북극항로에 적합한 품목:</strong></p>
+                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 2;">
+                        <li>LNG (액화천연가스) - 운송 시간 단축 효과 큼</li>
+                        <li>컨테이너 화물 - 비용 절감 효과 우수</li>
+                        <li>고부가가치 제품 - 시간 민감도 높은 품목</li>
+                        <li>냉동/냉장 화물 - 운송 기간 단축으로 품질 유지</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 최종 추천 -->
+            <section class="ai-recommendation">
+                <h2>💡 최종 추천</h2>
+                <div class="recommendation-box">
+                    <p id="final-recommendation">
+                        현재 입력하신 조건에서 <strong>북극항로 활용을 권장</strong>합니다.
+                        수에즈 항로 대비 약 27.8%의 비용 절감과 37.5%의 시간 단축 효과가 예상됩니다.
+                        여름철 운항 시 리스크가 낮아 안전한 운송이 가능합니다.
+                    </p>
+                </div>
+            </section>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="window.print()" class="btn-secondary">📄 PDF 저장</button>
+                <button onclick="window.location.href='input.html'" class="btn-primary"
+                    style="width: auto; padding: 12px 32px;">새로운 분석</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/calculator.js"></script>
+    <script src="js/report.js"></script>
+</body>
+
+</html>
