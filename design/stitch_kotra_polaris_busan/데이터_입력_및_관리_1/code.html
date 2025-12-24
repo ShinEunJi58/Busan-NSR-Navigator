@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>KOTRA Polaris-Busan Data Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#005EB8", 
+                    "primary-light": "#E6F0FA",
+                    "primary-dark": "#004B93",
+                    "secondary": "#00A9CE", 
+                    "background-light": "#F5F7FA",
+                    "background-dark": "#121212",
+                    "surface-light": "#FFFFFF",
+                    "surface-dark": "#1E1E1E",
+                    "border-light": "#E2E8F0",
+                    "border-dark": "#2D3748",
+                    "text-primary": "#1A202C",
+                    "text-secondary": "#718096",
+                },
+                fontFamily: {
+                    "display": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                    "body": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                },
+                borderRadius: {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.625rem",
+                    "xl": "1rem",
+                    "2xl": "1.5rem",
+                },
+                boxShadow: {
+                    'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    'card': '0 2px 8px -1px rgba(0, 0, 0, 0.05)',
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-primary dark:text-gray-100 antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden pb-24">
+<header class="sticky top-0 z-30 flex items-center justify-between bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md px-5 py-4 border-b border-border-light dark:border-border-dark shadow-sm">
+<h2 class="text-text-primary dark:text-white text-[1.15rem] font-bold leading-tight tracking-tight flex-1">데이터 입력 및 관리</h2>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-full h-9 w-9 text-text-secondary dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-9 w-9 text-text-secondary dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto no-scrollbar w-full max-w-md mx-auto">
+<section class="px-5 pt-6 pb-2">
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-5 shadow-card border border-border-light dark:border-border-dark relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">inventory_2</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-primary-light dark:bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+</div>
+<span class="text-text-secondary dark:text-gray-400 text-xs font-semibold">등록된 운송</span>
+</div>
+<p class="text-text-primary dark:text-white text-2xl font-bold tracking-tight">12<span class="text-sm font-normal text-text-secondary ml-1">건</span></p>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-5 shadow-card border border-border-light dark:border-border-dark relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-emerald-600">check_circle</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-xl">auto_graph</span>
+</div>
+<span class="text-text-secondary dark:text-gray-400 text-xs font-semibold">최적화 완료</span>
+</div>
+<p class="text-text-primary dark:text-white text-2xl font-bold tracking-tight">5<span class="text-sm font-normal text-text-secondary ml-1">건</span></p>
+</div>
+</div>
+</section>
+<section class="px-5 py-4">
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-card border border-border-light dark:border-border-dark p-5">
+<div class="flex items-center gap-2 mb-5">
+<span class="material-symbols-outlined text-primary text-[22px]">edit_document</span>
+<h3 class="text-lg font-bold text-text-primary dark:text-white">새 물류 등록</h3>
+</div>
+<div class="space-y-4">
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-border-light dark:border-border-dark">
+<p class="text-xs font-bold text-text-secondary uppercase tracking-wider mb-3">운송 경로</p>
+<div class="relative flex flex-col gap-3">
+<div class="relative">
+<label class="absolute left-3 top-3 text-text-secondary dark:text-gray-500 pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">flight_takeoff</span>
+</label>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-gray-400" placeholder="출발지 (예: 부산항)" type="text"/>
+</div>
+<div class="absolute left-5 top-[44px] bottom-[44px] w-0.5 bg-border-light dark:bg-slate-700 -z-0"></div>
+<div class="relative">
+<label class="absolute left-3 top-3 text-text-secondary dark:text-gray-500 pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">flight_land</span>
+</label>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-gray-400" placeholder="도착지 (예: 로테르담)" type="text"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">화물 종류</label>
+<div class="relative">
+<input class="w-full pl-4 pr-3 py-3 bg-white dark:bg-slate-900 border border-border-light dark:border-border-dark rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="컨테이너" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">중량 (Ton)</label>
+<div class="relative">
+<input class="w-full pl-4 pr-3 py-3 bg-white dark:bg-slate-900 border border-border-light dark:border-border-dark rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="0.0" type="number"/>
+<span class="absolute right-3 top-3 text-xs text-text-secondary font-medium mt-0.5">톤</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">출항 예정일</label>
+<div class="relative">
+<span class="absolute left-3 top-3 text-text-secondary dark:text-gray-500 pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</span>
+<input class="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 border border-border-light dark:border-border-dark rounded-lg text-sm font-medium text-text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all appearance-none" type="date"/>
+</div>
+</div>
+<div class="mt-2">
+<label class="block text-xs font-semibold text-text-secondary mb-1.5 ml-1">관련 서류 (Invoice, B/L)</label>
+<div class="relative flex flex-col items-center justify-center border-2 border-dashed border-primary/30 bg-primary/5 hover:bg-primary/10 dark:bg-primary/10 dark:hover:bg-primary/20 rounded-xl p-6 transition-colors cursor-pointer group">
+<div class="h-10 w-10 rounded-full bg-surface-light dark:bg-slate-800 shadow-sm flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-xl">cloud_upload</span>
+</div>
+<p class="text-sm font-semibold text-primary mb-0.5">파일 업로드</p>
+<p class="text-[11px] text-text-secondary text-center">PDF, JPG, PNG 형식 지원<br/>(최대 10MB)</p>
+</div>
+</div>
+<button class="w-full mt-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-primary/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span>등록 및 분석 시작</span>
+</button>
+</div>
+</div>
+</section>
+<div class="flex items-center gap-4 px-5 py-2">
+<div class="h-px bg-border-light dark:bg-border-dark flex-1"></div>
+<span class="text-xs font-medium text-text-secondary">최근 내역</span>
+<div class="h-px bg-border-light dark:bg-border-dark flex-1"></div>
+</div>
+<section class="px-5 pb-6">
+<div class="flex justify-between items-center mb-3">
+<h3 class="text-lg font-bold text-text-primary dark:text-white">물류 목록</h3>
+<button class="text-xs font-bold text-primary hover:text-primary-dark flex items-center">
+                    전체보기 <span class="material-symbols-outlined text-sm ml-0.5">chevron_right</span>
+</button>
+</div>
+<div class="flex gap-2 mb-4 overflow-x-auto no-scrollbar">
+<button class="px-3.5 py-1.5 rounded-full bg-slate-800 text-white text-xs font-medium shadow-sm whitespace-nowrap">전체</button>
+<button class="px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-border-light dark:border-border-dark text-text-secondary dark:text-gray-300 text-xs font-medium whitespace-nowrap hover:bg-slate-50">분석 완료</button>
+<button class="px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-border-light dark:border-border-dark text-text-secondary dark:text-gray-300 text-xs font-medium whitespace-nowrap hover:bg-slate-50">처리중</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="group bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 shadow-sm active:border-primary transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<div class="flex items-center gap-1.5 text-xs text-text-secondary mb-1">
+<span class="font-medium bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-[10px]">SEA</span>
+<span>#NSR-23-001</span>
+<span class="mx-1 text-[10px] text-gray-300">|</span>
+<span>2023.10.25</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-base font-bold text-text-primary dark:text-white">부산항</span>
+<span class="material-symbols-outlined text-sm text-gray-400">arrow_forward</span>
+<span class="text-base font-bold text-text-primary dark:text-white">로테르담</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-primary/10 text-primary border border-primary/20">
+                            분석 완료
+                        </span>
+</div>
+<div class="flex items-center justify-between pl-2 mt-3 pt-3 border-t border-dashed border-border-light dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">weight</span>
+<span>15.5 ton</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+<span>2 files</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary text-lg group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<div class="group bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 shadow-sm active:border-primary transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-orange-400"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<div class="flex items-center gap-1.5 text-xs text-text-secondary mb-1">
+<span class="font-medium bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-[10px]">SEA</span>
+<span>#NSR-23-002</span>
+<span class="mx-1 text-[10px] text-gray-300">|</span>
+<span>2023.10.24</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-base font-bold text-text-primary dark:text-white">부산항</span>
+<span class="material-symbols-outlined text-sm text-gray-400">arrow_forward</span>
+<span class="text-base font-bold text-text-primary dark:text-white">함부르크</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-orange-50 dark:bg-orange-900/20 text-orange-500 border border-orange-200 dark:border-orange-800">
+<span class="animate-pulse w-1.5 h-1.5 rounded-full bg-orange-500 mr-1.5"></span>
+                            처리중
+                        </span>
+</div>
+<div class="flex items-center justify-between pl-2 mt-3 pt-3 border-t border-dashed border-border-light dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">weight</span>
+<span>24.0 ton</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+<span>1 file</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary text-lg group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<div class="group bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 shadow-sm active:border-primary transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-slate-300 dark:bg-slate-600"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<div class="flex items-center gap-1.5 text-xs text-text-secondary mb-1">
+<span class="font-medium bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-[10px]">SEA</span>
+<span>#NSR-23-003</span>
+<span class="mx-1 text-[10px] text-gray-300">|</span>
+<span>2023.10.23</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-base font-bold text-text-primary dark:text-white">부산항</span>
+<span class="material-symbols-outlined text-sm text-gray-400">arrow_forward</span>
+<span class="text-base font-bold text-text-primary dark:text-white">무르만스크</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 border border-slate-200 dark:border-slate-600">
+                            대기중
+                        </span>
+</div>
+<div class="flex items-center justify-between pl-2 mt-3 pt-3 border-t border-dashed border-border-light dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">weight</span>
+<span>18.2 ton</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+<span>1 file</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary text-lg group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-surface-light dark:bg-surface-dark border-t border-border-light dark:border-border-dark pb-safe-area shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
+<div class="flex justify-around items-center h-16 max-w-md mx-auto">
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-text-secondary hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">홈</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl fill-1">dataset</span>
+<span class="text-[10px] font-medium">데이터</span>
+</button>
+<div class="relative -top-6">
+<button class="flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg shadow-primary/40 hover:scale-105 active:scale-95 transition-all border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-text-secondary hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">map</span>
+<span class="text-[10px] font-medium">지도</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-text-secondary hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-medium">내 정보</span>
+</button>
+</div>
+<div class="h-[env(safe-area-inset-bottom)] w-full bg-surface-light dark:bg-surface-dark"></div>
+</nav>
+</div>
+
+</body></html>

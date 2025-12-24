@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KOTRA Polaris-Busan Data Management</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0f66bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2634",
+                        "border-light": "#cfdbe7",
+                        "border-dark": "#2a3b4d",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                        "body": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for clean mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden pb-20">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-20 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 border-b border-border-light/50 dark:border-border-dark/50">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1">데이터 관리</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-full h-10 w-10 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Scroll Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-6">
+<!-- Profile Stats -->
+<section class="px-4 py-4">
+<div class="flex flex-wrap gap-3">
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-4 items-start shadow-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">inventory_2</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-normal">등록된 운송</p>
+</div>
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">12</p>
+</div>
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-4 items-start shadow-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-emerald-500 text-xl">auto_graph</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-normal">최적화 완료</p>
+</div>
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">5</p>
+</div>
+</div>
+</section>
+<!-- New Logistics Registration Form -->
+<section class="flex flex-col">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-xl font-bold leading-tight px-4 pb-2 pt-2">새로운 물류 등록</h2>
+<!-- Input Fields -->
+<div class="flex flex-col gap-4 px-4 py-3">
+<div class="flex gap-4">
+<label class="flex flex-col min-w-0 flex-1 group">
+<p class="text-slate-900 dark:text-slate-200 text-sm font-medium leading-normal pb-2 group-focus-within:text-primary transition-colors">화물 종류</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 placeholder:text-slate-400 dark:placeholder:text-slate-600 px-4 text-base font-normal leading-normal focus:outline-0 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="예: 컨테이너" value=""/>
+</label>
+<label class="flex flex-col min-w-0 flex-1 group">
+<p class="text-slate-900 dark:text-slate-200 text-sm font-medium leading-normal pb-2 group-focus-within:text-primary transition-colors">중량 (톤)</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 placeholder:text-slate-400 dark:placeholder:text-slate-600 px-4 text-base font-normal leading-normal focus:outline-0 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="15.5" type="number" value=""/>
+</label>
+</div>
+<div class="flex gap-4">
+<label class="flex flex-col min-w-0 flex-1 group">
+<p class="text-slate-900 dark:text-slate-200 text-sm font-medium leading-normal pb-2 group-focus-within:text-primary transition-colors">출발지</p>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-400 dark:text-slate-600 text-[20px]">flight_takeoff</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 placeholder:text-slate-400 dark:placeholder:text-slate-600 pl-10 pr-4 text-base font-normal leading-normal focus:outline-0 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="부산항" value=""/>
+</div>
+</label>
+<label class="flex flex-col min-w-0 flex-1 group">
+<p class="text-slate-900 dark:text-slate-200 text-sm font-medium leading-normal pb-2 group-focus-within:text-primary transition-colors">도착지</p>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-400 dark:text-slate-600 text-[20px]">flight_land</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 placeholder:text-slate-400 dark:placeholder:text-slate-600 pl-10 pr-4 text-base font-normal leading-normal focus:outline-0 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="로테르담" value=""/>
+</div>
+</label>
+</div>
+</div>
+<!-- File Upload -->
+<div class="px-4 pb-4">
+<div class="flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-border-light dark:border-border-dark bg-surface-light/50 dark:bg-surface-dark/50 px-6 py-8 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer group">
+<div class="flex flex-col items-center gap-2">
+<div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-2xl">cloud_upload</span>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight text-center">파일 업로드</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-normal text-center max-w-[240px]">선적 서류나 인보이스를 업로드하세요 (PDF, JPG).</p>
+</div>
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold leading-normal tracking-wide hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">
+<span class="truncate">파일 선택</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="px-4 pb-6">
+<button class="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 bg-primary text-white text-base font-bold leading-normal tracking-wide hover:bg-primary-dark active:scale-[0.98] transition-all shadow-md shadow-primary/20">
+                        데이터 등록 및 분석 시작
+                    </button>
+</div>
+</section>
+<div class="h-2 bg-slate-100 dark:bg-slate-800/50 w-full mb-6"></div>
+<!-- Recent List -->
+<section class="flex flex-col px-4">
+<div class="flex items-center justify-between pb-3">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-lg font-bold leading-tight">최근 물류 목록</h2>
+<button class="text-primary text-sm font-medium hover:text-primary-dark">전체보기</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- List Item 1 -->
+<div class="flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark shadow-sm hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900 dark:text-white text-base">부산항 <span class="text-slate-400 mx-1">→</span> 로테르담</span>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                                AI 분석 완료
+                            </span>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-0.5">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">ID: #NSR-2023-001</p>
+<p class="text-xs text-slate-400 dark:text-slate-500">2023.10.25 접수</p>
+</div>
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark shadow-sm hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900 dark:text-white text-base">부산항 <span class="text-slate-400 mx-1">→</span> 함부르크</span>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800">
+                                처리중
+                            </span>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-0.5">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">ID: #NSR-2023-002</p>
+<p class="text-xs text-slate-400 dark:text-slate-500">2023.10.24 접수</p>
+</div>
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark shadow-sm hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900 dark:text-white text-base">부산항 <span class="text-slate-400 mx-1">→</span> 무르만스크</span>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
+                                대기중
+                            </span>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-0.5">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">ID: #NSR-2023-003</p>
+<p class="text-xs text-slate-400 dark:text-slate-500">2023.10.23 접수</p>
+</div>
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-30 bg-surface-light dark:bg-surface-dark border-t border-border-light dark:border-border-dark pb-safe-area">
+<div class="flex justify-around items-center h-16">
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">홈</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl fill-1">dataset</span>
+<span class="text-[10px] font-medium">데이터</span>
+</button>
+<div class="relative -top-5">
+<button class="flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg shadow-primary/30 active:scale-95 transition-transform border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-2xl">map</span>
+<span class="text-[10px] font-medium">지도</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-medium">내 정보</span>
+</button>
+</div>
+<!-- iOS Safe Area Spacer -->
+<div class="h-[env(safe-area-inset-bottom)] w-full bg-surface-light dark:bg-surface-dark"></div>
+</nav>
+</div>
+</body></html>
