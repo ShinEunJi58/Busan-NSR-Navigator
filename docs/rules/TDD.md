@@ -24,19 +24,64 @@
 
 ## 📋 TDD 적용 대상
 
-### ✅ 테스트 필수 (코어 로직)
+### ✅ 테스트 필수 (코어 로직만)
+
+**중요: UI 관련 코드는 테스트 자동화하지 않습니다!**
 
 1. **AI 에이전트** (`js/ai-agent.js`)
+   - extractKeywords()
+   - calculateRelevance()
+   - searchKnowledge()
+   - ask() - API 호출 부분은 Mock
+
 2. **경제성 계산기** (`js/calculator.js`)
+   - calculate()
+   - compare()
+   - calculateCO2()
+
 3. **리스크 모니터** (`js/risk-monitor.js`)
+   - analyzeRisk()
+   - getRiskLevel()
+
 4. **품목 추천** (`js/recommender.js`)
+   - recommend()
+   - calculateScore()
+
 5. **유틸리티** (`js/utils.js`)
+   - formatNumber()
+   - formatDate()
+   - validateInput()
 
-### ❌ 테스트 제외 (UI)
+### ❌ 테스트 제외 (UI 및 DOM 조작)
 
-- HTML/CSS 파일
-- DOM 조작 코드
-- Chart.js 렌더링
+**이유: UI 테스트는 시간이 오래 걸리고 복잡함. 수동 테스트로 충분!**
+
+- **HTML 파일** - 브라우저에서 수동 확인
+- **CSS 파일** - 브라우저에서 수동 확인
+- **DOM 조작 코드** - 브라우저에서 수동 확인
+  - `document.getElementById()`
+  - `element.addEventListener()`
+  - `element.innerHTML = ...`
+- **Chart.js 렌더링** - 브라우저에서 수동 확인
+- **이벤트 리스너** - 브라우저에서 수동 확인
+- **main.js** (UI 로직) - 브라우저에서 수동 확인
+
+### 🔍 수동 테스트 방법
+
+```bash
+# 로컬 서버 실행
+python -m http.server 8000
+
+# 브라우저에서 확인
+http://localhost:8000
+
+# 체크리스트
+- [ ] 모든 페이지 로딩 확인
+- [ ] 버튼 클릭 동작 확인
+- [ ] 입력 폼 동작 확인
+- [ ] 차트 렌더링 확인
+- [ ] 반응형 디자인 확인 (모바일/태블릿)
+```
 
 ---
 

@@ -137,7 +137,8 @@ Phase 4 (배포): ☐☐☐☐☐ 0%
 
 ## 💻 Phase 3: JavaScript 개발 (5시간)
 
-> JavaScript 로직 및 API 연동
+> JavaScript 로직 및 API 연동  
+> **중요: 코어 로직만 TDD 적용, UI는 브라우저에서 수동 테스트!**
 
 ### Epic 3.1: 기본 JavaScript 구조 (TDD)
 
