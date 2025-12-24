@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대시보드 - KOTRA 북극항로 네비게이터</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">🚢 NSR Navigator</div>
+            <nav>
+                <a href="index.html">🏠 홈</a>
+                <a href="dashboard.html" class="active">📊 대시보드</a>
+                <a href="input.html">📝 데이터 입력</a>
+                <a href="report.html">📈 분석 보고서</a>
+                <a href="ai-chat.html">🤖 AI 상담</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>📊 항로 비교 대시보드</h1>
+                <p>수에즈 vs 북극항로 실시간 비교</p>
+            </header>
+
+            <!-- 빠른 입력 -->
+            <section class="quick-input">
+                <h2>빠른 계산</h2>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>TEU:</label>
+                        <input type="number" id="quick-teu" value="10" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label>계절:</label>
+                        <select id="quick-season">
+                            <option value="summer">여름</option>
+                            <option value="winter">겨울</option>
+                        </select>
+                    </div>
+                    <button onclick="quickCalculate()" class="btn-primary">계산</button>
+                </div>
+            </section>
+
+            <!-- 항로 비교 카드 -->
+            <section class="comparison-cards">
+                <div class="card">
+                    <h3>🌊 수에즈 항로</h3>
+                    <div class="metric">
+                        <span class="label">거리</span>
+                        <span class="value" id="dash-suez-distance">21,000 km</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">시간</span>
+                        <span class="value" id="dash-suez-days">40 일</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">비용</span>
+                        <span class="value" id="dash-suez-cost">$18,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">CO₂</span>
+                        <span class="value" id="dash-suez-co2">3,150 ton</span>
+                    </div>
+                </div>
+
+                <div class="card highlight">
+                    <h3>❄️ 북극항로 (NSR)</h3>
+                    <div class="metric">
+                        <span class="label">거리</span>
+                        <span class="value" id="dash-nsr-distance">12,700 km</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">시간</span>
+                        <span class="value" id="dash-nsr-days">25 일</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">비용</span>
+                        <span class="value" id="dash-nsr-cost">$13,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">CO₂</span>
+                        <span class="value" id="dash-nsr-co2">1,905 ton</span>
+                    </div>
+                </div>
+
+                <div class="card savings">
+                    <h3>💰 절감 효과</h3>
+                    <div class="metric">
+                        <span class="label">거리 단축</span>
+                        <span class="value" id="dash-save-distance">8,300 km</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">시간 절감</span>
+                        <span class="value" id="dash-save-days">15 일</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">비용 절감</span>
+                        <span class="value" id="dash-save-cost">$5,000</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">CO₂ 감축</span>
+                        <span class="value" id="dash-save-co2">1,245 ton</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 차트 -->
+            <section class="charts-section">
+                <h2>📈 비교 차트</h2>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <canvas id="dashCostChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="dashTimeChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="dashCO2Chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI 추천 -->
+            <section class="ai-recommendation">
+                <h2>💡 AI 추천</h2>
+                <div class="recommendation-box">
+                    <p id="ai-rec-text">현재 조건에서 북극항로 이용 시 약 27.8%의 비용 절감이 예상됩니다. 여름철 운항을 권장합니다.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/calculator.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

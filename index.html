@@ -1,83 +1,117 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KOTRA 북극항로 스마트 네비게이터</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        .landing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1E88E5, #1565C0);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .btn-primary {
+            display: inline-block;
+            width: auto;
+            padding: 16px 48px;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: #1E88E5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #757575;
+            margin-top: 60px;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
+    <div class="landing-container">
+        <section class="hero">
             <h1>🚢 북극항로 스마트 네비게이터</h1>
-            <p>수에즈 vs 북극항로(NSR) 경제성 비교</p>
-        </header>
+            <p>AI 기반 북극항로(NSR) 물류 검증 및 최적화 의사결정 지원 플랫폼</p>
+            <a href="dashboard.html" class="btn-primary">시작하기 →</a>
+        </section>
 
-        <main>
-            <!-- 입력 섹션 -->
-            <section class="input-section">
-                <h2>📝 데이터 입력</h2>
-                <div class="input-group">
-                    <label for="teu">컨테이너 수량 (TEU):</label>
-                    <input type="number" id="teu" value="10" min="1">
-                </div>
-                <div class="input-group">
-                    <label for="season">계절:</label>
-                    <select id="season">
-                        <option value="summer">여름 (7-10월)</option>
-                        <option value="winter">겨울 (11-6월)</option>
-                    </select>
-                </div>
-                <button onclick="calculate()" class="btn-primary">계산하기</button>
-            </section>
-
-            <!-- 결과 섹션 -->
-            <section class="result-section">
-                <h2>📊 비교 결과</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h3>수에즈 항로</h3>
-                        <p>거리: <span id="suez-distance">21,000</span> km</p>
-                        <p>시간: <span id="suez-days">40</span> 일</p>
-                        <p>비용: $<span id="suez-cost">18,000</span></p>
-                        <p>CO₂: <span id="suez-co2">3,150</span> ton</p>
-                    </div>
-                    <div class="card highlight">
-                        <h3>북극항로 (NSR)</h3>
-                        <p>거리: <span id="nsr-distance">12,700</span> km</p>
-                        <p>시간: <span id="nsr-days">25</span> 일</p>
-                        <p>비용: $<span id="nsr-cost">13,000</span></p>
-                        <p>CO₂: <span id="nsr-co2">1,905</span> ton</p>
-                    </div>
-                    <div class="card savings">
-                        <h3>💰 절감액</h3>
-                        <p>거리: <span id="save-distance">8,300</span> km</p>
-                        <p>시간: <span id="save-days">15</span> 일</p>
-                        <p>비용: $<span id="save-cost">5,000</span></p>
-                        <p>CO₂: <span id="save-co2">1,245</span> ton</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 차트 섹션 -->
-            <section class="chart-section">
-                <h2>📈 시각화</h2>
-                <div class="charts">
-                    <canvas id="costChart"></canvas>
-                    <canvas id="timeChart"></canvas>
-                </div>
-            </section>
-        </main>
+        <section class="features">
+            <div class="feature-card">
+                <div style="font-size: 3rem;">🤖</div>
+                <h3>AI 상담</h3>
+                <p>북극항로 전문 AI가 실시간으로 질문에 답변합니다</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 3rem;">📊</div>
+                <h3>경제성 분석</h3>
+                <p>수에즈 vs NSR 비용/시간/CO₂ 비교 분석</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 3rem;">⚡</div>
+                <h3>실시간 계산</h3>
+                <p>TEU 및 계절별 맞춤 비용 계산</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 3rem;">📈</div>
+                <h3>시각화</h3>
+                <p>인터랙티브 차트로 한눈에 비교</p>
+            </div>
+        </section>
 
         <footer>
             <p>© 2025 KOTRA 북극항로 스마트 네비게이터</p>
             <p>Made with ❤️ by ShinEunJi58</p>
         </footer>
     </div>
-
-    <script src="js/calculator.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="js/main.js"></script>
 </body>
+
 </html>

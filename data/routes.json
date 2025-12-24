@@ -1,0 +1,26 @@
+{
+  "routes": {
+    "suez": {
+      "all": {
+        "distance_km": 21000,
+        "lead_time_days": 40,
+        "base_cost_usd": 8000,
+        "cost_per_teu": 1000
+      }
+    },
+    "nsr": {
+      "summer": {
+        "distance_km": 12700,
+        "lead_time_days": 25,
+        "base_cost_usd": 8000,
+        "cost_per_teu": 500
+      },
+      "winter": {
+        "distance_km": 12700,
+        "lead_time_days": 25,
+        "base_cost_usd": 8000,
+        "cost_per_teu": 600
+      }
+    }
+  }
+}

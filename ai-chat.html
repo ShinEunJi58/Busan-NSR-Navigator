@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 상담 - KOTRA 북극항로 네비게이터</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">🚢 NSR Navigator</div>
+            <nav>
+                <a href="index.html">🏠 홈</a>
+                <a href="dashboard.html">📊 대시보드</a>
+                <a href="input.html">📝 데이터 입력</a>
+                <a href="report.html">📈 분석 보고서</a>
+                <a href="ai-chat.html" class="active">🤖 AI 상담</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>🤖 AI 북극항로 상담</h1>
+                <p>북극항로에 대해 궁금한 점을 물어보세요</p>
+            </header>
+
+            <section class="chat-section">
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-message bot">
+                        <div class="message-content">
+                            <strong>AI 상담원</strong>
+                            <p>안녕하세요! 북극항로 전문 AI 상담원입니다. 북극항로에 대해 궁금하신 점을 물어보세요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="예: 북극항로의 장점은 무엇인가요?"
+                        onkeypress="if(event.key==='Enter') sendMessage()">
+                    <button onclick="sendMessage()" class="btn-primary">전송</button>
+                </div>
+
+                <div class="quick-questions">
+                    <h3>자주 묻는 질문</h3>
+                    <button onclick="askQuestion('북극항로의 장점은 무엇인가요?')" class="btn-secondary">북극항로 장점</button>
+                    <button onclick="askQuestion('계절별 운항 조건은 어떻게 다른가요?')" class="btn-secondary">계절별 조건</button>
+                    <button onclick="askQuestion('비용은 얼마나 절감되나요?')" class="btn-secondary">비용 절감</button>
+                    <button onclick="askQuestion('주요 리스크는 무엇인가요?')" class="btn-secondary">리스크 요인</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/ai-agent.js"></script>
+    <script src="js/ai-chat.js"></script>
+</body>
+
+</html>
