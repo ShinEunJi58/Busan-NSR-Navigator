@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KOTRA Polaris-Busan Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f2c59", // Deep Navy for trust/maritime
+                        "primary-light": "#1e3a8a",
+                        "accent": "#0ea5e9", // Sky blue for digital/tech feel
+                        "background-light": "#f8fafc", // Slate 50
+                        "background-dark": "#0b1120",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                    },
+                    boxShadow: {
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'floating': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+            font-feature-settings: "cv11", "ss01";
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-primary/10">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark border-x border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-5 py-3 border-b border-slate-200 dark:border-slate-800">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold tracking-widest text-accent uppercase mb-0.5">Logistics AI Platform</span>
+<h1 class="text-lg font-bold tracking-tight text-primary dark:text-white leading-none">
+                Polaris-Busan
+            </h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-slate-500 hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2.5 h-2 w-2 rounded-full bg-red-500 border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-primary dark:text-white font-semibold text-xs overflow-hidden">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24 scroll-smooth">
+<div class="px-5 pt-4 pb-2">
+<div class="flex p-1 bg-slate-100 dark:bg-slate-800/50 rounded-lg">
+<button class="flex-1 py-1.5 px-3 rounded-md bg-white dark:bg-slate-700 shadow-sm text-xs font-semibold text-slate-900 dark:text-white text-center transition-all">
+                    Current Voyage
+                </button>
+<button class="flex-1 py-1.5 px-3 rounded-md text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 text-center transition-all">
+                    Analysis
+                </button>
+<button class="flex-1 py-1.5 px-3 rounded-md text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 text-center transition-all">
+                    History
+                </button>
+</div>
+</div>
+<section class="px-5 py-4">
+<h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 px-1">Performance Metrics</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-4 bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-700 shadow-card flex flex-col justify-between h-28 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-primary dark:text-white">monetization_on</span>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Cost Savings</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white mt-1">$12.4K</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="flex items-center text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-1.5 py-0.5 rounded text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] mr-0.5">arrow_upward</span> 12%
+                        </span>
+<span class="text-[10px] text-slate-400">vs. Suez</span>
+</div>
+</div>
+<div class="p-4 bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-700 shadow-card flex flex-col justify-between h-28 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-emerald-600">eco</span>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Carbon Reduction</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white mt-1">-24%</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-[10px] font-medium text-accent">Target Achieved</span>
+</div>
+</div>
+<div class="col-span-2 grid grid-cols-2 gap-3">
+<div class="p-3 bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-700 shadow-card flex items-center gap-3">
+<div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-semibold text-slate-400">ETA Busan</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Oct 24, 14:00</p>
+</div>
+</div>
+<div class="p-3 bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-700 shadow-card flex items-center gap-3">
+<div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-[20px]">route</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-semibold text-slate-400">Distance</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">5,200 km</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="px-5 py-2">
+<div class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-card">
+<div class="px-4 py-3 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+</span>
+<h3 class="text-sm font-bold text-slate-900 dark:text-white">Live Route Tracking</h3>
+</div>
+<span class="text-[10px] font-mono text-slate-400">NSR-2023-08-A</span>
+</div>
+<div class="relative w-full h-56 group">
+<img alt="Satellite view of arctic ocean" class="absolute inset-0 w-full h-full object-cover brightness-[0.9]" data-alt="Satellite view of arctic ocean with ice sheets and dark blue water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4COSVG9vm2wxvsTB-ak77AyvSatFy-FCrjJ3fcnNCI4ci5l-iOKlyUHvr3aSxg5S2XTh7Lyuy1Gyb33tHDAHB4kXZu2rbri-jjNJypwf9odQuq0zkbopI6zoQaRBmFecH1FZdScntz84ieC8_4bX5unhKUvD21YS9C3PthYqkme_bIfrmjTeh1jX4LEzREKSDQklACWEQl_PEU5kRwy2WhL_e6hmyjHZ5jreHsqgnEPnYRCtoG1e1UtVCrZA7Ttk8wnpo7EUC1ks"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/60"></div>
+<svg class="absolute inset-0 w-full h-full pointer-events-none drop-shadow-md" preserveAspectRatio="none" viewBox="0 0 400 300">
+<path d="M 50 250 Q 150 200 350 150" fill="none" stroke="rgba(255,255,255,0.3)" stroke-dasharray="4,4" stroke-width="1.5"></path>
+<path d="M 50 250 Q 150 150 350 100" fill="none" stroke="#3b82f6" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="180" cy="180" fill="white" r="5" stroke="#3b82f6" stroke-width="2.5"></circle>
+<circle class="animate-ping origin-center" cx="180" cy="180" fill="transparent" r="8" stroke="white" stroke-opacity="0.5" stroke-width="1"></circle>
+</svg>
+<div class="absolute bottom-3 left-3 bg-white/95 dark:bg-slate-900/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-slate-200/20 shadow-lg">
+<p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Current Location</p>
+<p class="text-xs font-bold text-slate-800 dark:text-white">Kara Sea (72°N, 65°E)</p>
+</div>
+<div class="absolute top-3 right-3 bg-primary/90 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg backdrop-blur-sm border border-white/10">
+                        AI OPTIMIZED
+                    </div>
+</div>
+</div>
+</section>
+<section class="px-5 py-4">
+<div class="relative rounded-2xl overflow-hidden bg-primary shadow-floating">
+<div class="absolute top-0 right-0 w-32 h-32 bg-accent opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+<div class="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500 opacity-20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+<div class="relative p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<div class="bg-white/10 p-1.5 rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-accent text-[20px]">auto_fix_high</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white">AI Route Optimization</h3>
+<p class="text-[10px] text-slate-300">Polaris Intelligence Engine</p>
+</div>
+</div>
+<span class="bg-accent/20 text-accent text-[10px] font-bold px-2 py-1 rounded border border-accent/20">
+                            ACTION REQUIRED
+                        </span>
+</div>
+<p class="text-sm text-slate-200 mb-5 leading-relaxed font-light">
+                        Detected ice formation near Yamal Peninsula. A <strong class="text-white font-medium">2° northerly shift</strong> is recommended to maintain schedule.
+                    </p>
+<div class="grid grid-cols-2 gap-3 mb-5">
+<div class="bg-white/5 rounded-lg p-3 border border-white/10">
+<p class="text-[10px] text-slate-400 uppercase tracking-wide">Fuel Efficiency</p>
+<p class="text-lg font-bold text-emerald-400">+4.5%</p>
+</div>
+<div class="bg-white/5 rounded-lg p-3 border border-white/10">
+<p class="text-[10px] text-slate-400 uppercase tracking-wide">Risk Assessment</p>
+<p class="text-lg font-bold text-slate-200">Minimal</p>
+</div>
+</div>
+<button class="w-full bg-white hover:bg-slate-50 text-primary font-semibold py-3 rounded-xl text-xs transition-colors flex items-center justify-center gap-2 shadow-sm">
+                        Apply Optimization
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<section class="px-5 pb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">System Notifications</h2>
+<button class="text-xs text-accent font-medium hover:text-accent/80 transition-colors">View All</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex gap-4 p-4 bg-white dark:bg-card-dark rounded-xl border-l-4 border-amber-500 shadow-sm">
+<div class="mt-0.5">
+<span class="material-symbols-outlined text-amber-500 text-[22px]">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Ice Condition Warning</h4>
+<span class="text-[10px] text-slate-400">15m ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                            Thick ice detected at sector B-4. Recommended speed reduction to 5 knots.
+                        </p>
+</div>
+</div>
+<div class="flex gap-4 p-4 bg-white dark:bg-card-dark rounded-xl border-l-4 border-blue-500 shadow-sm">
+<div class="mt-0.5">
+<span class="material-symbols-outlined text-blue-500 text-[22px]">thermostat</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Low Temperature Alert</h4>
+<span class="text-[10px] text-slate-400">2h ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                            Hull temperature reached -20°C. Heating systems active.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="sticky bottom-0 z-50 bg-white/90 dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe pt-1">
+<div class="flex justify-around items-center px-4 pb-2 pt-1">
+<button class="group flex flex-col items-center gap-1 p-2 w-16">
+<div class="p-1 rounded-full bg-primary/10 dark:bg-primary/30 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-blue-400 text-[24px]">dashboard</span>
+</div>
+<span class="text-[10px] font-bold text-primary dark:text-blue-400">Home</span>
+</button>
+<button class="group flex flex-col items-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[24px]">directions_boat</span>
+<span class="text-[10px] font-medium">Voyage</span>
+</button>
+<button class="group flex flex-col items-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+<span class="text-[10px] font-medium">Data</span>
+</button>
+<button class="group flex flex-col items-center gap-1 p-2 w-16 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</div>
+<div class="h-4 w-full bg-transparent flex justify-center items-center">
+<div class="w-32 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+</div>
+</nav>
+</div>
+
+</body></html>

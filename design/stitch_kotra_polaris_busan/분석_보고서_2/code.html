@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>분석 보고서 - KOTRA Polaris-Busan</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0b63be",
+                        "background-light": "#f8fafc", // slate-50
+                        "background-dark": "#0f172a", // slate-900
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "Noto Sans KR", "sans-serif"],
+                        "sans": ["Public Sans", "Noto Sans KR", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'report': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'floating': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>@media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .shadow-xl, .shadow-lg, .shadow-sm { box-shadow: none !important; }
+            .bg-white { background: transparent !important; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans antialiased">
+<div class="relative flex flex-col min-h-screen max-w-md mx-auto bg-white dark:bg-slate-950 shadow-2xl overflow-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 no-print">
+<button class="flex items-center justify-center w-10 h-10 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-base font-bold text-slate-900 dark:text-white">분석 보고서</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">ios_share</span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto pb-10">
+<div class="p-6 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-[11px] font-bold text-primary uppercase tracking-wide">AI Verified</span>
+</div>
+<span class="text-xs font-medium text-slate-400">2024.05.21</span>
+</div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-tight mb-2">
+                    Busan <span class="text-slate-300 font-light px-1">→</span> Rotterdam
+                </h2>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-slate-400 text-sm">tag</span>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Route #NSR-2024-05 (북극항로)</p>
+</div>
+<div class="relative w-full aspect-[2/1] rounded-2xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAa_0hVY-DkZrkEovajsf8To32cPm88JPBQigubinKzvW_iR2zH7-z0M6CeAlztYJg-H8ETDWAkMpUzuX1W_C1ugoCIc9ddmEYXhYiEKpN1frebjp9dhO5mvXVaJ6VA19ELowdeJUQHm_60E1MnIamgbIQ-JxqemH2U-4XSEGFGO4X1suK0CrZp-9mpafmN7NXeqrFn_Ql08xOeKBDs_jJhtpITJO3L51JO-xCjA7zaEMLojGzhNWzEVljIcRhGHhPtNmtb9VrspXg");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+<div>
+<p class="text-xs text-slate-300 font-medium mb-1">총 운송 거리</p>
+<p class="text-2xl font-bold text-white tracking-tight">12,500 km</p>
+</div>
+<div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2 flex items-center gap-3 pr-4">
+<div class="relative size-10 shrink-0">
+<svg class="size-full -rotate-90" viewBox="0 0 36 36">
+<path class="text-white/20" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-300 font-bold uppercase">Score</span>
+<span class="text-lg font-black text-white leading-none">94</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">AI 핵심 요약</h3>
+</div>
+<div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-report border border-slate-100 dark:border-slate-700 mb-6">
+<p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-medium mb-0">
+                        이번 북극항로(NSR) 경로는 기존 수에즈 운하 경로 대비 <span class="text-primary font-bold">거리 28% 단축</span> 효과가 있습니다. 연료비 절감과 운송 시간 단축을 통해 물류 효율성을 극대화할 수 있는 최적의 경로입니다.
+                    </p>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col items-center p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="mb-2 p-2 bg-blue-50 dark:bg-blue-900/30 rounded-full text-primary">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</div>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">비용 절감</span>
+<span class="text-sm font-black text-slate-800 dark:text-white mt-0.5">-15%</span>
+</div>
+<div class="flex flex-col items-center p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="mb-2 p-2 bg-orange-50 dark:bg-orange-900/30 rounded-full text-orange-500">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">시간 단축</span>
+<span class="text-sm font-black text-slate-800 dark:text-white mt-0.5">-8일</span>
+</div>
+<div class="flex flex-col items-center p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="mb-2 p-2 bg-green-50 dark:bg-green-900/30 rounded-full text-green-500">
+<span class="material-symbols-outlined text-[20px]">eco</span>
+</div>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">탄소 배출</span>
+<span class="text-sm font-black text-slate-800 dark:text-white mt-0.5">Grade A</span>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-8 bg-white dark:bg-slate-950">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white border-l-4 border-slate-900 dark:border-white pl-3">상세 분석 데이터</h3>
+<div>
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">attach_money</span>
+                            물류 비용 분석
+                        </h4>
+<span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-1 rounded">단위: USD</span>
+</div>
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50">
+<div class="flex justify-between items-end mb-4">
+<span class="text-xs font-semibold text-slate-500">총 예상 비용</span>
+<span class="text-2xl font-black text-slate-900 dark:text-white">$12,500</span>
+</div>
+<div class="space-y-4">
+<div class="group">
+<div class="flex justify-between text-xs mb-1.5 font-medium">
+<span class="text-primary">NSR (제안)</span>
+<span class="text-slate-700 dark:text-slate-300">$12,500</span>
+</div>
+<div class="h-3 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full shadow-[0_0_10px_rgba(19,127,236,0.3)]"></div>
+</div>
+</div>
+<div class="group opacity-60">
+<div class="flex justify-between text-xs mb-1.5 font-medium">
+<span class="text-slate-500">Suez (기존)</span>
+<span class="text-slate-700 dark:text-slate-300">$14,200</span>
+</div>
+<div class="h-3 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-slate-500 w-[90%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-slate-400 text-lg">timer</span>
+                        운송 시간 예측
+                    </h4>
+<div class="grid grid-cols-[1fr_auto_1fr] gap-2 items-center">
+<div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-center">
+<span class="block text-xs text-slate-500 mb-1">기존</span>
+<span class="block text-lg font-bold text-slate-400 line-through">30일</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">arrow_forward</span>
+<div class="p-4 rounded-xl border border-orange-200 dark:border-orange-800/30 bg-orange-50 dark:bg-orange-900/10 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-8 h-8 -mr-2 -mt-2 bg-orange-200 dark:bg-orange-700/50 rounded-full blur-lg"></div>
+<span class="block text-xs text-orange-600 dark:text-orange-400 font-bold mb-1">AI 최적화</span>
+<span class="block text-xl font-black text-orange-600 dark:text-orange-400">22일</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
+<h4 class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5 text-sm mb-3">
+<span class="material-symbols-outlined text-green-500 text-lg">co2</span>
+                            탄소 배출
+                        </h4>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-black text-green-600">A</span>
+<span class="text-xs text-slate-500 font-medium">등급</span>
+</div>
+<p class="text-[10px] text-slate-400 mt-1">15톤 CO2e 배출 예상</p>
+</div>
+<div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
+<h4 class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5 text-sm mb-3">
+<span class="material-symbols-outlined text-red-500 text-lg">warning</span>
+                            리스크
+                        </h4>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-black text-slate-700 dark:text-slate-300">Low</span>
+</div>
+<p class="text-[10px] text-slate-400 mt-1">빙하 리스크 낮음</p>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6">
+<div class="relative overflow-hidden rounded-2xl bg-slate-900 dark:bg-slate-800 p-6 text-center shadow-xl">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+<div class="flex justify-center mb-4">
+<div class="size-14 rounded-full bg-slate-800 dark:bg-slate-700 flex items-center justify-center ring-4 ring-slate-800/50">
+<span class="material-symbols-outlined text-white text-2xl">picture_as_pdf</span>
+</div>
+</div>
+<h3 class="text-white font-bold text-lg mb-1">상세 보고서 다운로드</h3>
+<p class="text-slate-400 text-xs mb-6 max-w-[240px] mx-auto leading-relaxed">
+                        전체 경로 좌표 및 구간별 상세 분석 데이터가 포함된 PDF 원본 파일을 확인하세요.
+                    </p>
+<button class="w-full py-4 bg-primary hover:bg-primary-dark active:scale-[0.98] transition-all rounded-xl font-bold text-white shadow-lg shadow-primary/25 flex items-center justify-center gap-2 text-sm">
+<span class="material-symbols-outlined">download</span>
+                        PDF 저장하기 (2.4MB)
+                    </button>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOTRA 북극항로 스마트 네비게이터</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚢 북극항로 스마트 네비게이터</h1>
+            <p>수에즈 vs 북극항로(NSR) 경제성 비교</p>
+        </header>
+
+        <main>
+            <!-- 입력 섹션 -->
+            <section class="input-section">
+                <h2>📝 데이터 입력</h2>
+                <div class="input-group">
+                    <label for="teu">컨테이너 수량 (TEU):</label>
+                    <input type="number" id="teu" value="10" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="season">계절:</label>
+                    <select id="season">
+                        <option value="summer">여름 (7-10월)</option>
+                        <option value="winter">겨울 (11-6월)</option>
+                    </select>
+                </div>
+                <button onclick="calculate()" class="btn-primary">계산하기</button>
+            </section>
+
+            <!-- 결과 섹션 -->
+            <section class="result-section">
+                <h2>📊 비교 결과</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>수에즈 항로</h3>
+                        <p>거리: <span id="suez-distance">21,000</span> km</p>
+                        <p>시간: <span id="suez-days">40</span> 일</p>
+                        <p>비용: $<span id="suez-cost">18,000</span></p>
+                        <p>CO₂: <span id="suez-co2">3,150</span> ton</p>
+                    </div>
+                    <div class="card highlight">
+                        <h3>북극항로 (NSR)</h3>
+                        <p>거리: <span id="nsr-distance">12,700</span> km</p>
+                        <p>시간: <span id="nsr-days">25</span> 일</p>
+                        <p>비용: $<span id="nsr-cost">13,000</span></p>
+                        <p>CO₂: <span id="nsr-co2">1,905</span> ton</p>
+                    </div>
+                    <div class="card savings">
+                        <h3>💰 절감액</h3>
+                        <p>거리: <span id="save-distance">8,300</span> km</p>
+                        <p>시간: <span id="save-days">15</span> 일</p>
+                        <p>비용: $<span id="save-cost">5,000</span></p>
+                        <p>CO₂: <span id="save-co2">1,245</span> ton</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 차트 섹션 -->
+            <section class="chart-section">
+                <h2>📈 시각화</h2>
+                <div class="charts">
+                    <canvas id="costChart"></canvas>
+                    <canvas id="timeChart"></canvas>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 KOTRA 북극항로 스마트 네비게이터</p>
+            <p>Made with ❤️ by ShinEunJi58</p>
+        </footer>
+    </div>
+
+    <script src="js/calculator.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

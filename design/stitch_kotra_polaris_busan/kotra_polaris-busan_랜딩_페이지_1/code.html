@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KOTRA Polaris-Busan</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-50 antialiased overflow-x-hidden pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 border-b border-slate-200 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-3">
+<button class="text-slate-900 dark:text-white flex items-center justify-center rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Polaris-Busan</h2>
+</div>
+</div>
+<button class="text-slate-900 dark:text-white flex items-center justify-center rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<!-- Hero Section -->
+<div class="@container">
+<div class="@[480px]:p-4">
+<div class="relative flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-end pb-12 px-6 pt-20" data-alt="Large container ship navigating through icy waters in the arctic ocean" style='background-image: linear-gradient(rgba(19, 127, 236, 0.2) 0%, rgba(16, 25, 34, 0.4) 40%, rgba(16, 25, 34, 0.95) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwU5vqwuac5CHi4rdA5H7EpqpqgPFxlsnNT-p-rMP2_di_KyqHFxSJSqXTm6FnaObsibfVQR_BjcOVdT78Blyx-14BKe7CNyvexCkMcCWS5F-10ZfBbeh7jaYc9GgfhQ6rstqj9-O3hGavHb0hZ-dvoLpuoNWSXxnYggPNEmkT4Dsq_1E8GUq2iNDBBR5JuRl5W4I4VqMMQr_Yih_jufiOHx43xVHdP3s1agIFHwt5Enfe3JxuoNBmnESKUIE8peIk5zOhaXW7Bbo");'>
+<div class="flex flex-col gap-3 text-center w-full max-w-[600px]">
+<div class="inline-flex items-center justify-center gap-2 self-center rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 px-3 py-1 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+<span class="text-white text-xs font-bold tracking-wide">KOTRA 공식 지원 플랫폼</span>
+</div>
+<h1 class="text-white text-4xl font-black leading-[1.1] tracking-[-0.033em] drop-shadow-sm">
+                        북극항로의<br/>새로운 지평을 열다
+                    </h1>
+<h2 class="text-slate-300 text-base font-medium leading-relaxed mt-2">
+                        AI 기반 물류 시뮬레이션으로<br/>부산 중소기업의 물류 경쟁력을 극대화하세요.
+                    </h2>
+</div>
+<div class="w-full max-w-[480px] grid grid-cols-2 gap-3 mt-4">
+<button class="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all">
+<span class="text-sm font-bold truncate">소개 영상</span>
+<span class="material-symbols-outlined ml-2 text-sm">play_circle</span>
+</button>
+<button class="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary hover:bg-blue-600 text-white shadow-lg shadow-primary/25 transition-all">
+<span class="text-sm font-bold truncate">최적화 시작하기</span>
+<span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- NSR Comparison Stats -->
+<div class="px-4 py-8 bg-white dark:bg-background-dark border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold">왜 북극항로(NSR)인가요?</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Stat Card 1 -->
+<div class="bg-background-light dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-1">운송 거리 단축</p>
+<div class="flex items-end gap-1 mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">32%</span>
+<span class="text-green-500 mb-1 material-symbols-outlined text-sm">arrow_downward</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 68%"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 text-right">vs 수에즈 운하</p>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-background-light dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-1">운송 일수 절감</p>
+<div class="flex items-end gap-1 mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">10일</span>
+<span class="text-green-500 mb-1 material-symbols-outlined text-sm">arrow_downward</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 75%"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 text-right">부산-로테르담 기준</p>
+</div>
+</div>
+</div>
+<!-- Feature Section -->
+<div class="flex flex-col gap-6 px-4 py-8">
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-[24px] font-bold leading-tight">
+                AI 기반 스마트 솔루션
+            </h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">
+                KOTRA의 데이터와 첨단 AI가 만나 최적의 항로를 제안합니다.
+            </p>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Feature 1 -->
+<div class="group flex gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm hover:border-primary/50 transition-colors">
+<div class="size-12 shrink-0 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">alt_route</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">AI 경로 최적화</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        해빙 밀도와 기상 데이터를 실시간 분석하여 가장 안전하고 빠른 항로를 추천합니다.
+                    </p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="group flex gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm hover:border-primary/50 transition-colors">
+<div class="size-12 shrink-0 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">비용/시간 비교 분석</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        기존 수에즈 운하 대비 절감되는 비용과 시간을 즉시 시뮬레이션하고 리포트를 제공합니다.
+                    </p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="group flex gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm hover:border-primary/50 transition-colors">
+<div class="size-12 shrink-0 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">satellite_alt</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">실시간 위성 모니터링</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        극지연구소와 연계된 위성 데이터를 통해 운항 중인 선박의 안전을 24시간 감시합니다.
+                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Preview / Data Viz -->
+<div class="w-full aspect-[4/3] relative bg-slate-900 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="Map visualization showing shipping routes from Busan to Rotterdam across the Arctic ocean" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-UlOQ4smYA7XFokmwMrvThmyJc-OC_mOPN3JMflPpw5yFfU9SAP7wADqWmWCgVdMtWuL-P1uQIvNgli4mq6T7ZoarEc6ief78_TolzGYxY4k5hRec957RqvyzM2JIXiihBJSmgzSjl6a3X8tt0_RqsQNq6hwWKJBgqt16p9-kZkFESsPJs50wxlrFN_0uDzyhileC8P5JgfD2U4YgHNyWb05dhfEBltcjbPgP0_ca67cacs_79Cc_bcWjMXq7onoL5ut7fD-XGsE");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+<div class="relative z-10 w-full px-6 pt-20 pb-6 flex flex-col items-center text-center gap-3">
+<span class="inline-flex items-center justify-center size-12 rounded-full bg-primary/20 backdrop-blur-md border border-primary text-primary shadow-[0_0_15px_rgba(19,127,236,0.5)]">
+<span class="material-symbols-outlined">public</span>
+</span>
+<h3 class="text-white text-xl font-bold">글로벌 물류의 지각변동</h3>
+<p class="text-slate-300 text-sm max-w-[280px]">부산항은 북극항로의 기점이자 종점입니다. <br/>미래 물류 허브의 중심에 서십시오.</p>
+</div>
+<!-- Animated Route Dots (Simulated) -->
+<div class="absolute top-1/3 right-1/4 size-2 bg-primary rounded-full animate-ping"></div>
+<div class="absolute top-1/4 right-1/3 size-2 bg-white rounded-full opacity-50"></div>
+</div>
+<!-- How it works -->
+<div class="px-4 py-10 bg-white dark:bg-background-dark">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold mb-6">이용 절차</h2>
+<div class="flex justify-between items-start relative">
+<!-- Connector Line -->
+<div class="absolute top-5 left-0 w-full h-0.5 bg-slate-100 dark:bg-slate-800 z-0"></div>
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col items-center gap-2 w-1/3">
+<div class="size-10 rounded-full bg-white dark:bg-slate-800 border-2 border-primary text-primary flex items-center justify-center font-bold shadow-sm">
+                    1
+                </div>
+<p class="text-xs font-medium text-center text-slate-600 dark:text-slate-300">화물 정보<br/>입력</p>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center gap-2 w-1/3">
+<div class="size-10 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-400 flex items-center justify-center font-bold shadow-sm">
+                    2
+                </div>
+<p class="text-xs font-medium text-center text-slate-400">AI 최적<br/>경로 분석</p>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center gap-2 w-1/3">
+<div class="size-10 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-400 flex items-center justify-center font-bold shadow-sm">
+                    3
+                </div>
+<p class="text-xs font-medium text-center text-slate-400">결과 리포트<br/>확인</p>
+</div>
+</div>
+</div>
+<!-- Partners / Trust -->
+<div class="bg-background-light dark:bg-slate-900/30 py-8 px-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-center text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">Partners &amp; Collaboration</p>
+<div class="grid grid-cols-3 gap-6 opacity-60 grayscale">
+<!-- Partner 1 -->
+<div class="flex items-center justify-center h-8 bg-contain bg-center bg-no-repeat font-black text-slate-400 text-lg italic tracking-tighter">
+                KOTRA
+            </div>
+<!-- Partner 2 -->
+<div class="flex items-center justify-center h-8 bg-contain bg-center bg-no-repeat font-bold text-slate-400 text-base">
+                BUSAN
+            </div>
+<!-- Partner 3 -->
+<div class="flex items-center justify-center h-8 bg-contain bg-center bg-no-repeat font-bold text-slate-400 text-xs text-center leading-none">
+                극지연구소<br/>(KOPRI)
+            </div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark py-10 px-6 border-t border-slate-200 dark:border-slate-800 pb-32">
+<div class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg">KOTRA Polaris-Busan</h3>
+<div class="flex flex-col gap-1 text-sm text-slate-500 dark:text-slate-400">
+<p>부산광역시 강서구 미음동 123-4</p>
+<p>Tel: 051-123-4567 | Email: polaris@kotra.or.kr</p>
+</div>
+<div class="flex gap-4 mt-2">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">help</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">policy</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">security</span></a>
+</div>
+<p class="text-xs text-slate-400 mt-4">© 2024 KOTRA Polaris-Busan. All rights reserved.</p>
+</div>
+</footer>
+<!-- Bottom Sticky CTA -->
+<div class="fixed bottom-0 left-0 w-full bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-4 pb-8 z-50">
+<button class="w-full bg-primary hover:bg-blue-600 active:scale-[0.98] text-white font-bold h-14 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-all">
+<span>무료 진단 시작하기</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</body></html>
